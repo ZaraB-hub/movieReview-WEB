@@ -41,7 +41,7 @@
             {
                 $stmt = $this->conn->prepare("SELECT * FROM " . $this->table_name . " WHERE ".$this->table_name."Id=:id");
                 $stmt->execute(['id' => $id]);
-                return $stmt->fetchAll();
+                return $stmt->fetch(PDO::FETCH_ASSOC);
             }
 
         }
