@@ -1,5 +1,5 @@
 <?php
-require_once "BaseDao.class.php";
+require_once "BaseDao.php";
 
 class ActorsDao extends BaseDao {
 

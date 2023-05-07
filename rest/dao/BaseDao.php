@@ -1,5 +1,4 @@
-<!-- <?php
-        require_once __DIR__ . "/../Config.class.php";
+<?php
         class BaseDao
         {
             private $conn;
@@ -40,11 +39,10 @@
              */
             public function get_by_id($id)
             {
-                $stmt = $this->conn->prepare("SELECT * FROM " . $this->table_name . " WHERE id=:id");
+                $stmt = $this->conn->prepare("SELECT * FROM " . $this->table_name . " WHERE ".$this->table_name."Id=:id");
                 $stmt->execute(['id' => $id]);
                 return $stmt->fetchAll();
             }
 
         }
 
-        ?>
