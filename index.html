@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./assets/pics/logo.png">
+
+  <title>Flixpedia: Rate shows and discover new ones</title>
+
+  <link rel="stylesheet" href="assets/css/spapp.css" />
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <!-- MY CSS -->
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <!-- FONTS -->
+  <link rel="stylesheet" href="./assets/css/fonts.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-dark bg-dark m-0 p-0 ">
+    <div class="container-fluid mx-1 ms-3 ">
+      <div class="row align-items-center" id="row">
+        <div class="col-auto px-2">
+          <a class="navbar-brand d-flex align-items-center" href="#home">
+            <img src="./assets/pics/logo-bg-removed.png" alt="Logo" width="55" height="44"
+              class="d-inline-block align-text-top">
+            <h2 style="font-family: 'LemonMilk'; font-weight: medium; margin-left: 10px; margin-top: 10px;">FLIXPEDIA
+            </h2>
+          </a>
+        </div>
+        <div class="col-7 px-5 mx-4 text-center">
+          <form class="d-flex">
+            <input class="form-control me-1" type="search" placeholder="Search Flexbox" aria-label="Search">
+            <button class="btn btn-outline-black ms-1 border-0 text-black" type="submit">
+              <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+        <div class="col-auto line">
+          <div id="nav-login">
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Navbar
+  <nav role="navigation">
+    <ul>
+      <li><a href="#view_1">go to view 1</a></li>
+      <li><a href="#view_2">go to view 2</a></li>
+      <li><a href="#view_3">go to view 3</a></li>
+    </ul>
+  </nav>
+
+  <main id="spapp" role="main">
+    <section id="view_2"></section>
+    <section id="view_3">
+      <h1>view 3</h1>
+    </section>
+    <section id="error_404">
+      <h1>Page not found</h1>
+    </section>
+    <section id="view_1" data-load="view_1.html"></section>
+  </main> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="assets/js/jquery.spapp.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+  <script>
+    var nav = '<a class="nav-link" href="">Sign up</a>' + '<a class="nav-link" href="">Log in</a>';
+    var navUser = '<span><i class="fa fa-user-circle fa-2xl" style="color:white; width: 20%; size: 20px;"></i></span><h5>Username</h5>';
+
+    if(false){
+      $("#nav-login").html(navUser);
+    }else{
+      $("#nav-login").html(nav);
+    }
+    
+    console.log(nav);
+    console.log(jQuery().jquery);
+    console.log("hi");
+  </script>
+
+
+
+</body>
+
+</html>
