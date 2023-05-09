@@ -18,63 +18,59 @@
 
   <!-- MY CSS -->
   <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/navbar.css">
+  <link rel="stylesheet" href="./assets/css/home.css">
   <!-- FONTS -->
   <link rel="stylesheet" href="./assets/css/fonts.css">
 </head>
 
 <body>
 
-  <nav class="navbar navbar-dark bg-dark m-0 p-0 ">
-    <div class="container-fluid mx-1 ms-3 ">
-      <div class="row align-items-center" id="row">
+  <nav class="navbar navbar-dark bg-dark m-0 p-0 w-100 ">
+    <div class="container-fluid mx-1 ms-3 w-100 ">
+      <div class="row w-100 d-flex justify-content-between align-items-center" id="row">
         <div class="col-auto px-2">
           <a class="navbar-brand d-flex align-items-center" href="#home">
             <img src="./assets/pics/logo-bg-removed.png" alt="Logo" width="55" height="44"
               class="d-inline-block align-text-top">
-            <h2 style="font-family: 'LemonMilk'; font-weight: medium; margin-left: 10px; margin-top: 10px;">FLIXPEDIA
+            <h2 class="d-none d-lg-block"
+              style="font-family: 'LemonMilk'; font-weight: medium; margin-left: 10px; margin-top: 10px;">FLIXPEDIA
             </h2>
           </a>
         </div>
-        <div class="col-7 px-5 mx-4 text-center">
+        <div class="col-lg-6 col-sm-2 px-5 mx-4 text-center">
           <form class="d-flex">
-            <input class="form-control me-1" type="search" placeholder="Search Flexbox" aria-label="Search">
-            <button class="btn btn-outline-black ms-1 border-0 text-black" type="submit">
-              <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
+            <input class="form-control me-1 d-none d-lg-block" id="search-input" type="search"
+              placeholder="Search Flexbox" aria-label="Search">
+            <button class="btn btn-outline-black ms-1 border-0 text-black" id="search-icon" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
             </button>
           </form>
         </div>
-        <div class="col-auto line">
+        <div class="col-auto col-sm-2 line">
           <div id="nav-login">
           </div>
         </div>
       </div>
     </div>
   </nav>
+  <div id="search-results-overlay"></div>
+  
 
 
-  <!-- Navbar
-  <nav role="navigation">
-    <ul>
-      <li><a href="#view_1">go to view 1</a></li>
-      <li><a href="#view_2">go to view 2</a></li>
-      <li><a href="#view_3">go to view 3</a></li>
-    </ul>
-  </nav>
 
-  <main id="spapp" role="main">
-    <section id="view_2"></section>
-    <section id="view_3">
-      <h1>view 3</h1>
-    </section>
-    <section id="error_404">
-      <h1>Page not found</h1>
-    </section>
-    <section id="view_1" data-load="view_1.html"></section>
-  </main> -->
+
+</div>
+
+  <main id="spapp" role="main" class=" mx-4 mt-3">
+    <section id="home" data-load="home.html" ></section>
+  </main> 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="assets/js/jquery.spapp.js"></script>
   <script src="assets/js/custom.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/movieSection.js"></script>
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -84,15 +80,12 @@
     var nav = '<a class="nav-link" href="">Sign up</a>' + '<a class="nav-link" href="">Log in</a>';
     var navUser = '<span><i class="fa fa-user-circle fa-2xl" style="color:white; width: 20%; size: 20px;"></i></span><h5>Username</h5>';
 
-    if(false){
+    if (false) {
       $("#nav-login").html(navUser);
-    }else{
+    } else {
       $("#nav-login").html(nav);
     }
-    
-    console.log(nav);
-    console.log(jQuery().jquery);
-    console.log("hi");
+
   </script>
 
 
