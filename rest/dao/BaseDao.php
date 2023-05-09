@@ -1,8 +1,8 @@
 <?php
         class BaseDao
         {
-            private $conn;
-            private $table_name;
+            protected $conn;
+            protected $table_name;
 
             /**
              * Class constructor used to establish connection to db
