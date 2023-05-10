@@ -1,6 +1,5 @@
 
-
-h3{
+#section-title{
     margin: 0;
     padding: 0;
 }
@@ -10,12 +9,18 @@ h3{
     border-radius: 8px;
 }
 
+
+.card:hover{
+    cursor:pointer;
+}
+
 .section{
-    color: var(--accent-color);    
+    color: red;    
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
+    
 }
 
 .card-body{
@@ -25,24 +30,36 @@ h3{
 
 .card-group{
     gap: 10px;
+
 }
 
 .card-container{
     max-width: 220px;
     max-height: 400px;
 
-    min-width: 200px;
+    min-width: 220px;
     min-height: 400px;
+    /* min-width: 150px;
+    min-height: 360px; */
 }
 
 .card-img-container{
-    height: 68%;
+    height: 60%;
 }
 
-.card-img-container > img{
-    height: 100%
+
+h5{
+    max-width: 188px;
+    max-height: 56px;
+
+    min-width: 188px;
+    min-height: 56px;
+
+    font-size: 16px;
+
 }
+
+
 .card-body-container{
-    height:35%;
     background-color: var(--fade-black);
 }
