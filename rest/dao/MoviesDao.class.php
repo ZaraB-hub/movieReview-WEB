@@ -28,7 +28,7 @@ class MoviesDao extends BaseDao
 
     public function get_genre($genre)
     {
-        $stmt = $this->conn->prepare("SELECT title,name from movie_genre 
+        $stmt = $this->conn->prepare("SELECT * from movie_genre 
                 join movies on MoviesID=MovieID
                 join genres on GenresID=GenreID
                 where name Like :genre COLLATE utf8mb4_general_ci");
