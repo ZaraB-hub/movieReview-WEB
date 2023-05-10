@@ -11,6 +11,18 @@ class MoviesService extends BaseService{
         return $this->dao_object->get_by_title($title);
         
     }
+
+    public function get_genre($genre)
+    {
+        return $this->dao_object->get_genre($genre);
+        
+    }
+
+    public function get_trending()
+    {
+        return $this->dao_object->get_trending();
+        
+    }
     
 }
 ?>
