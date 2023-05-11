@@ -21,7 +21,7 @@ class MoviesDao extends BaseDao
 
     public function get_all()
     {
-        $stmt = $this->conn->prepare("SELECT * from MOVIES order by CreatedTimestamp desc LIMIT 4");
+        $stmt = $this->conn->prepare("SELECT * from MOVIES order by CreatedTimestamp desc");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

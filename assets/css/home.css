@@ -15,7 +15,7 @@
 }
 
 .section{
-    color:red;    
+    color:var(--accent-color);    
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -48,7 +48,7 @@
 }
 
 
-.title-section{
+/* .title-section{
     max-width: 188px;
     max-height: 56px;
 
@@ -57,7 +57,7 @@
 
     font-size: 16px;
 
-}
+} */
 
 
 .card-body-container{
