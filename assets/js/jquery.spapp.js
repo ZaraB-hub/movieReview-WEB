@@ -6,7 +6,8 @@
     var config, routes = {};
 
     config = $.extend({
-      defaultView  : $("main#spapp > section:last-child").attr("id"),
+      // defaultView  : $("main#spapp > section:last-child").attr("id"),
+      defaultView  :"#home",
       templateDir  : './templates/',
       pageNotFound : false
     }, options );
