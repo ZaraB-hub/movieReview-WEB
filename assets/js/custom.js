@@ -6,8 +6,10 @@ $(document).ready(function() {
 
   // define routes
 
-  app.route({view: 'view_2', load: 'view_2.html' });
-  app.route({view: 'view_1', load: 'view_1.html' });
+  app.route({view: 'movie', load: 'movie.html' });
+  app.route({view: 'search', load: 'search.html' });
+  app.route({view: 'watchlist', load: 'watchlist.html' });
+  
 
   // run app
   app.run();
