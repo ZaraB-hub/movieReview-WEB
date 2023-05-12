@@ -16,7 +16,7 @@ $(function () {
             var sectionTitle = $("<h3>").text(route);
             sectionContainer.append(sectionTitle);
             // Create a cardGroup for each section
-            var cardGroup = $("<div>").addClass("card-group d-flex flex-nowrap pb-1 overflow-hidden");
+            var cardGroup = $("<div>").addClass("card-group d-flex flex-nowrap overflow-auto pb-1 scroll-behavior");
             $.get(routeURL, function (data) {
                 // Iterate through the data and generate cards
                 if (routeURL == "rest/movies/watchlist" && data.length == 0) {
@@ -46,8 +46,10 @@ $(function () {
                         cardGroup.append(cardContainer);
                         cardContainer.click(function () {
                             var movieId = $(this).attr("data-id");
-                            // window.location.href = "#movie?id=" + movieID;
-                            window.location.href = "#movie";
+                            var encodedMovieId = encodeURIComponent(movieId);
+                            window.location.href = "#movie?id=" + encodedMovieId;
+                            // window.location.href = "#movie?id=" + movieId;
+                            // window.location.href = "#movie";
 
                         });
                     });
