@@ -63,3 +63,11 @@
 .card-body-container{
     background-color: var(--fade-black);
 }
+
+.scroll-behavior {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.scroll-behavior::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
