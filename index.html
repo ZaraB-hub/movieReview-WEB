@@ -66,7 +66,7 @@
     <section id="movie" data-load="movie.html"></section>
     <section id="search" data-load="search.html"></section>
     <section id="watchlist" data-load="watchlist.html"></section>
-    <section id="person" data-load="person.html"></section>
+    <section id="actor" data-load="actor.html"></section>
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -91,6 +91,9 @@
       $("#nav-login").html(nav);
     }
 
+    $(document).ready(function() {
+    getHome();
+});
   </script>
 
 

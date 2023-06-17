@@ -9,7 +9,8 @@ $(document).ready(function() {
   app.route({view: 'movie', load: 'movie.html' });
   app.route({view: 'search', load: 'search.html' });
   app.route({view: 'watchlist', load: 'watchlist.html' });
-  
+  app.route({view: 'actor', load: 'actor.html' });
+
 
   // run app
   app.run();

@@ -14,7 +14,7 @@ $(function () {
         });
 
         $.get("rest/actors/" + userSearchInput, function (data) {
-            console.log(data);
+            
         });
     }
 
