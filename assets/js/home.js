@@ -46,12 +46,31 @@ $(function () {
                         cardGroup.append(cardContainer);
                         cardContainer.click(function () {
                             var movieId = $(this).attr("data-id");
-                            var encodedMovieId = encodeURIComponent(movieId);
-                            window.location.href = "#movie?id=" + encodedMovieId;
-                            // window.location.href = "#movie?id=" + movieId;
-                            // window.location.href = "#movie";
+                            // $.get("rest/movies/id/" + movieId, function (data) {
+                            //     // Load the movie template
+                            //     $.get("templates/movie.html", function (template) {
+                            //         // Create a jQuery object from the template
+                            //         var movieTemplate = $(template);
+                            //         // Update the movie information in the template
+                            //         movieTemplate.find(".movie-title").text(data.Title);
+                            //         movieTemplate.find(".year").text(data.Year);
+                            //         movieTemplate.find(".content-rating").text(data.ContentRating);
+                            //         movieTemplate.find(".duration").text(data.Duration);
+                            //         movieTemplate.find(".category").text(data.Category);
+                            //        // movieTemplate.find("#movie-poster img").attr("src", data.Poster);
+                            //         movieTemplate.find(".plot p").text(data.Plot);
+
+                            //         // Clear the existing content in the home section and append the movie template
+                            //         $(".home").empty().append(movieTemplate);
+                            //     });
+                            // });
+                            localStorage.setItem("selectedMovieId", movieId);
+                            console.log(localStorage.getItem("selectedMovieId"))
+                            // Redirect to the movie view
+                            window.location.href = "#movie";
 
                         });
+
                     });
                     // Append the cardGroup to the section container
                     sectionContainer.append(cardGroup);

@@ -7,21 +7,6 @@ class ActorsDao extends BaseDao {
         parent::__construct("actors");
     }
 
-    // public function get_by_name($first, $last)
-    // {
-    //     $sql = "SELECT * FROM actors WHERE FirstName LIKE :first";
-    //     $params = ['first' => '%' . $first . '%'];
-    
-    //     if ($last) {
-    //         $sql .= " OR LastName LIKE :last";
-    //         $params['last'] = '%' . $last . '%';
-    //     }
-    
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->execute($params);
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
 
     public function get_by_name($name)
     {

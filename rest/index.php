@@ -36,6 +36,13 @@ require_once './dao/ContentRatingDao.class.php';
 Flight::register('contentrating_dao','ContentRatingDao');
 Flight::register('contentrating_service','ContentRatingService');
 
+
+require_once './services/Movie_GenreService.php';
+require_once './routes/Movie_GenreRoutes.php';
+require_once './dao/Movie_GenreDao.class.php';
+Flight::register('movie_genre_dao','Movie_GenreDao');
+Flight::register('movie_genre_service','Movie_GenreService');
+
 Flight::register('db', 'PDO', array('mysql:host=localhost;dbname=zmdb','root','uniburch'));
 
 Flight::start();
