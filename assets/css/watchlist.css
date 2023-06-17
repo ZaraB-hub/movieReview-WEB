@@ -1,0 +1,10 @@
+.watchlist{
+    width: 70%;
+    margin: 0 auto;
+    background-color: var(--fade-black);
+}
+
+option{
+    color: black;
+}
+
