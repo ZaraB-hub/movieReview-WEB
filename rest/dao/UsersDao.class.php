@@ -12,5 +12,7 @@ class UsersDao extends BaseDao {
     {
         return $this->query_unique("SELECT * FROM users WHERE email = :email", ["email" => $email]);
     }
+
+
 }
 ?>

@@ -8,11 +8,7 @@ class UsersService extends BaseService
         parent::__construct(new UsersDao);
     }
 
-    function getUserByFirstNameAndLastName($firstName, $lastName)
-    {
-        return $this->dao_object->getUserByFirstNameAndLastName($firstName, $lastName);
-    }
-    
+   
     function add($user)
     {
         $user['password'] = md5($user['password']);
@@ -28,6 +24,7 @@ class UsersService extends BaseService
     function getUserByEmail($email)
     {
         return $this->dao_object->getUserByEmail($email);
+        
     }
 }
 ?>
