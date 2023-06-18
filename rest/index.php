@@ -43,6 +43,14 @@ require_once './dao/Movie_GenreDao.class.php';
 Flight::register('movie_genre_dao','Movie_GenreDao');
 Flight::register('movie_genre_service','Movie_GenreService');
 
+
+
+require_once './services/UsersService.php';
+require_once './routes/UsersRoutes.php';
+require_once './dao/UsersDao.class.php';
+Flight::register('users_dao','UsersDao');
+Flight::register('users_service','UsersService');
+
 Flight::register('db', 'PDO', array('mysql:host=localhost;dbname=zmdb','root','uniburch'));
 
 Flight::start();
