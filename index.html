@@ -32,9 +32,8 @@
 <body>
 
   <nav class="navbar navbar-dark bg-dark m-0 p-0 w-100 ">
-    <div class="container-fluid mx-1 ms-3 w-100 ">
-      <div class="row w-100 d-flex justify-content-between align-items-center" id="row">
-        <div class="col-auto px-2">
+      <div class=" w-100 d-flex justify-content-between align-items-center " id="row">
+        <div class=" ps-4">
           <a class="navbar-brand d-flex align-items-center" href="#home">
             <img src="./assets/pics/logo-bg-removed.png" alt="Logo" width="55" height="44"
               class="d-inline-block align-text-top">
@@ -43,22 +42,24 @@
             </h2>
           </a>
         </div>
-        <div class="col-lg-6 col-sm-2 px-5 mx-4 text-center">
-          <!-- HTML -->
-          <form action="#search" method="post" id="search-form" class="d-flex">
-            <input class="form-control me-1 d-none d-lg-block" id="search-input" type="search" name="search_query"
-              placeholder="Search Flixpedia" aria-label="Search">
-            <button class="btn btn-outline-black ms-1 border-0 text-black" id="search-icon" type="submit">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </form>
-
+        <div class="  text-center flex-grow-1">
+            <form action="#search" method="post" id="search-form" class="d-flex">
+              <input class="form-control me-1 d-none d-lg-block" id="search-input" type="search" name="search_query"
+                placeholder="Search Flixpedia" aria-label="Search">
+              <button class="btn btn-outline-black ms-1 border-0 text-black" id="search-icon" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
         </div>
-        <div class="col-auto col-sm-2 line">
-          <div id="nav-login">
+
+        <div class="d-flex">
+          <a href="#watchlist"><i class="bi bi-bookmark-star"></i></a>
+
+          <div class="line mx-3 px-3 d-flex">
+            <div id="nav-login">
+            </div>
           </div>
         </div>
-      </div>
     </div>
   </nav>
   
@@ -72,13 +73,8 @@
     <section id="actor" data-load="actor.html"></section>
   </main>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="assets/js/jquery.spapp.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script src="./assets/js/search.js"></script>
-  <script src="./assets/js/home.js"></script>
-  <script src="./assets/js/movie.js"></script>
-  <script src="./assets/js/navbar.js"></script>
+
+
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -86,10 +82,14 @@
 
   <script>
     var nav = '<a class="nav-link" href="signup.html">Sign up</a>' + '<a class="nav-link" href="login.html">Log in</a>';
-    var navUser = '<span><i class="fa fa-user-circle fa-2xl" style="color:white; width: 20%; size: 20px;"></i></span><h5>Username</h5>';
+    var navUser = '<span><i class="fa fa-user-circle fa-2xl" style="color:white; width: 20%; size: 20px;"></i></span><h5 id="username"></h5>';
 
-    if (false) {
+    var token = localStorage.getItem("user_token");
+    if (token) {
+      var user = Utils.parseJwt(token);
+      console.log(user);
       $("#nav-login").html(navUser);
+      $("#username").text(user.Username);
     } else {
       $("#nav-login").html(nav);
     }
@@ -99,7 +99,15 @@
 });
   </script>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="assets/js/jquery.spapp.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="./assets/js/search.js"></script>
+<script src="./assets/js/home.js"></script>
+<script src="./assets/js/movie.js"></script>
+<script src="./assets/js/navbar.js"></script>
+<script src="./assets/js/utils.js"></script>
+<script src="./assets/js/watchlist-service.js"></script>
 
 </body>
 

@@ -10,10 +10,6 @@
 }
 
 
-.card:hover{
-    cursor:pointer;
-}
-
 .section{
     color:var(--accent-color);    
     display: flex;
@@ -45,19 +41,11 @@
 
 .card-img-container{
     height: 60%;
+    cursor: pointer;
 }
 
 
-/* .title-section{
-    max-width: 188px;
-    max-height: 56px;
 
-    min-width: 188px;
-    min-height: 56px;
-
-    font-size: 16px;
-
-} */
 
 
 .card-body-container{
@@ -70,4 +58,9 @@
 }
 .scroll-behavior::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
+}
+
+.card-title:hover{
+ text-decoration: underline;
+ cursor: pointer;
 }

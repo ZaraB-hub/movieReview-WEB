@@ -44,12 +44,23 @@ Flight::register('movie_genre_dao','Movie_GenreDao');
 Flight::register('movie_genre_service','Movie_GenreService');
 
 
-
 require_once './services/UsersService.php';
 require_once './routes/UsersRoutes.php';
 require_once './dao/UsersDao.class.php';
 Flight::register('users_dao','UsersDao');
 Flight::register('users_service','UsersService');
+
+require_once './services/WatchlistsService.php';
+require_once './routes/WatchlistsRoutes.php';
+require_once './dao/WatchlistsDao.class.php';
+Flight::register('watchlists_dao','WatchlistsDao');
+Flight::register('watchlists_service','WatchlistsService');
+
+
+require_once './services/Watchlist_MovieService.php';
+require_once './routes/Watchlist_MovieRoutes.php';
+require_once './dao/Watchlist_MovieDao.class.php';
+Flight::register('watchlistsm_service','Watchlist_MovieService');
 
 Flight::register('db', 'PDO', array('mysql:host=localhost;dbname=zmdb','root','uniburch'));
 
