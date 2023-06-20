@@ -11,5 +11,18 @@ class Watchlist_MovieService extends BaseService{
         return $this->dao_object->getWatchlistByWatchlist($id);
         
     }
+
+    function deleteMovie($w,$id)
+    {
+        return $this->dao_object->deleteMovie($w,$id);
+        
+    }
+
+
+    function addMovie($w,$id)
+    {
+        return $this->dao_object->addMovie($w,$id);
+        
+    }
 }
 ?>

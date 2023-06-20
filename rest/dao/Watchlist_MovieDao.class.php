@@ -28,6 +28,19 @@ class Watchlist_MovieDao extends BaseDao {
         $stmt->execute();
         return $entity;
     }
+
+    public function deleteMovie($w,$id)
+    {    
+        return $this->query("DELETE FROM watchlists_movies WHERE MoviesID = :id and  WatchlistsID = :w", ["id" => $id,"w"=>$w]);
+
+    }
+
+    
+    public function addMovie($w,$id)
+    {    
+        return $this->query("INSERT INTO watchlists_movies VALUES MoviesID = :id and  WatchlistsID = :w", ["id" => $id,"w"=>$w]);
+
+    }
     
     
 }

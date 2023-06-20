@@ -19,5 +19,7 @@ class WatchlistsService extends BaseService
         return $this->dao_object->getWatchlistByUser($id);
         
     }
+
+
 }
 ?>
