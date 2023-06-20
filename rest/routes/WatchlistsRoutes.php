@@ -1,10 +1,10 @@
 <?php
 
-Flight::route('/watchlist', function () {
+Flight::route('/watchlists', function () {
     FLight::json(Flight::watchlists_service()->get_all());
 });
 
-Flight::route('/watchlist/@id', function ($id) {
+Flight::route('/watchlists/@id', function ($id) {
     FLight::json(Flight::watchlists_service()->get_by_id($id));
 });
 

@@ -1,6 +1,5 @@
 var UserService = {
     init: function () {
-        console.log("init");
         var token = localStorage.getItem("user_token");
         if (token) {
             window.location.replace("index.html");

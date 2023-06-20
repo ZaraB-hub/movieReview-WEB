@@ -17,6 +17,16 @@ Flight::route('POST /users', function () {
   Flight::json(Flight::users_service()->add($data));
 });
 
+Flight::route('POST /email', function () {
+  $data = Flight::request()->data->getData();
+  Flight::json(Flight::users_service()->addEmail($data));
+});
+
+Flight::route('POST /username', function () {
+  $data = Flight::request()->data->getData();
+  Flight::json(Flight::users_service()->addUsername($data));
+});
+
 Flight::route('PUT /users/@id', function ($id) {
   $data = Flight::request()->data->getData();
   Flight::users_service()->update($id, $data);
@@ -25,14 +35,14 @@ Flight::route('PUT /users/@id', function ($id) {
 
 Flight::route('POST /login', function () {
   $login = Flight::request()->data->getData();
-  $user = Flight::users_service()->getUserByEmail("zarabahtanovic@gmail.com");
+  $user = Flight::users_service()->getUserByEmail($login['email']);
   if (isset($user['UsersID'])){
     if($user['Password'] == md5($login['password'])){
       unset($user['Password']);
       $jwt = JWT::encode($user, Config::JWT_SECRET(), 'HS256');
       Flight::json(['token' => $jwt]);
     } else {
-      Flight::json(["message" => "Wrong password"], 404);
+      Flight::json(["message" => "Wrong credentials"], 404);
     }
   } else {
     Flight::json(["message" => "User doesn't exist"], 404);

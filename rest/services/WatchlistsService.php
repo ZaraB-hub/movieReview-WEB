@@ -8,7 +8,7 @@ class WatchlistsService extends BaseService
         parent::__construct(new WatchlistsDao);
     }
 
-   
+
     function add($data)
     {
         return parent::add($data);

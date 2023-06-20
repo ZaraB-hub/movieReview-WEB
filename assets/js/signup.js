@@ -1,13 +1,58 @@
 var Signup = {
   init: function () {
-    console.log("hi2")
     $("#signupForm").validate({
+      rules: {
+        email: {
+          required: true,
+          email: true,
+          remote: {
+            url: "rest/email", 
+            type: "post",
+            data: {
+              email: function () {
+                return $("#email").val();
+              }
+            }
+          }
+        },
+        password: {
+          required: true,
+          minlength:3
+        },
+        username: {
+          required: true,
+      }
+    },
+      messages: {
+        email: {
+          required: "Please enter your email",
+          email: "Please enter a valid email address",
+          remote: "Email address is already in use"
+        },
+        password: {
+          required: "Please enter your password",
+          minlength: "Password has to have atleast 3 charachters"
+        },
+        username: {
+          required: "Please enter your username",
+        }
+      },
+      errorElement: "div",
+      errorPlacement: function (error, element) {
+        error.addClass("text-danger");
+        error.insertAfter(element);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass("is-invalid");
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass("is-invalid");
+      },
       submitHandler: function (form) {
-        console.log("form");
         var user = Object.fromEntries(new FormData(form).entries());
         Signup.addUser(user);
         form.reset();
-      },
+      }
     });
   },
   addUser: function (user) {
@@ -19,7 +64,8 @@ var Signup = {
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        Signup.createWatchlist(result)
+        Signup.createWatchlist(result);
+        toastr.success('Have fun storming the castle!');
         window.location.replace("login.html");
       },
     });
@@ -27,11 +73,10 @@ var Signup = {
   createWatchlist: function (result) {
     console.log(result);
     var watchlistData = {
-      UsersID: result.id // Assuming 'id' is the correct property from the 'result' object
-    };
-
+      UsersID: result.id 
+    }
     $.ajax({
-      url: "rest/watchlists",
+      url: "rest/watchlist",
       type: "POST",
       data: JSON.stringify(watchlistData),
       contentType: "application/json",
