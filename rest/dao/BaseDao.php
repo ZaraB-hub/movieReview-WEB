@@ -1,3 +1,5 @@
+
+
 <?php
         class BaseDao
         {
@@ -11,12 +13,10 @@
             {
                 try {
                     $this->table_name = $table_name;
-                    $servername = Config::DB_HOST();
-                    $username = Config::DB_USERNAME();
-                    $password = Config::DB_PASSWORD();
-                    $schema = Config::DB_SCHEMA();;
-                    $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
+                    $this->conn = Database::getInstance()->getConnection();
                     // set the PDO error mode to exception
+                    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    //echo "Connected successfully";
                     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     //echo "Connected successfully";
                 } catch (PDOException $e) {
@@ -57,9 +57,9 @@
                 return reset($results);
             }
         
-            public function delete($id)
+            public function delete($id,$id_column="id")
             {
-                $stmt = $this->conn->prepare("DELETE FROM " . $this->table_name . " WHERE id=:id");
+                $stmt = $this->conn->prepare("DELETE FROM " . $this->table_name . " WHERE ${id_column}=:id");
                 $stmt->bindParam(':id', $id); // SQL injection prevention
                 $stmt->execute();
             }

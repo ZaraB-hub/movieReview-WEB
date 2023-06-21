@@ -22,10 +22,14 @@ class BaseService
             return $this->dao_object->get_by_id($id);
         }
     
+        public function update($entity, $id, $id_column="id"){
+            return $this->dao_object->update($entity, $id, $id_column);
+        }
     
-        public function delete($id)
+    
+        public function delete($id,$id_column="id")
         {
-            return $this->dao_object->delete($id);
+            return $this->dao_object->delete($id,$id_column);
         }
 
         public function add($data)

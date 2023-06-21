@@ -9,11 +9,6 @@ class WatchlistsService extends BaseService
     }
 
 
-    function add($data)
-    {
-        return parent::add($data);
-    }
-
     function getWatchlistByUser($id)
     {
         return $this->dao_object->getWatchlistByUser($id);

@@ -3,12 +3,20 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS, PATCH');
 require_once '../vendor/autoload.php';
 require_once './Config.class.php';
+require_once './Database.class.php';
+
 
 require_once './services/ActorsService.php';
 require_once './routes/ActorsRoutes.php';
 require_once './dao/ActorsDao.class.php';
 Flight::register('actors_dao','ActorsDao');
 Flight::register('actors_service','ActorsService');
+
+require_once './services/Movie_ActorService.php';
+require_once './routes/Movie_ActorRoutes.php';
+require_once './dao/Movie_ActorDao.class.php';
+Flight::register('movie_actors_dao','Movie_ActorDao');
+Flight::register('movie_actors_service','Movie_ActorService');
 
 require_once './services/MoviesService.php';
 require_once './routes/MoviesRoutes.php';
@@ -61,6 +69,13 @@ require_once './services/Watchlist_MovieService.php';
 require_once './routes/Watchlist_MovieRoutes.php';
 require_once './dao/Watchlist_MovieDao.class.php';
 Flight::register('watchlistsm_service','Watchlist_MovieService');
+
+require_once './services/ReviewsService.php';
+require_once './routes/ReviewsRoutes.php';
+require_once './dao/ReviewsDao.class.php';
+Flight::register('reviews_dao','ReviewsDao');
+Flight::register('reviews_service','ReviewsService');
+
 
 Flight::register('db', 'PDO', array('mysql:host=localhost;dbname=zmdb','root','uniburch'));
 

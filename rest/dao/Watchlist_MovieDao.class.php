@@ -36,11 +36,11 @@ class Watchlist_MovieDao extends BaseDao {
     }
 
     
-    public function addMovie($w,$id)
+    public function addMovie($w, $id)
     {    
-        return $this->query("INSERT INTO watchlists_movies VALUES MoviesID = :id and  WatchlistsID = :w", ["id" => $id,"w"=>$w]);
-
+        return $this->query("INSERT INTO watchlists_movies (MoviesID, WatchlistsID) VALUES (:id, :w)", ["id" => $id, "w" => $w]);
     }
+    
     
     
 }
