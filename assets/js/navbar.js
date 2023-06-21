@@ -48,28 +48,12 @@ $(function () {
         resultsContainer.show();
     }
 
-    // Event listener for search icon click
-    // $("#search-icon").click(function (event) {
-    //     event.preventDefault();
-    //     performSearch();
-    // });
 
-    // Event listener for ENTER key press
-    // $("#search-input").keyup(function (event) {
-    //     if (event.keyCode === 13) {
-    //         event.preventDefault();
-    //         performSearch();
-    //     }
-    // });
 
     // Event listener for input change
     $("#search-input").on("input", function () {
         performSearch();
     });
 
-    // Event listener for form submit
-    // $("form").submit(function (event) {
-    //     event.preventDefault();
-    //     performSearch();
-    // });
+
 });

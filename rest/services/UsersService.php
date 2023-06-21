@@ -13,6 +13,7 @@ class UsersService extends BaseService
         $user['password'] = md5($user['password']);
         return parent::add($user);
     }
+
     function getUserByEmail($email)
     {
         return $this->dao_object->getUserByEmail($email);
@@ -43,4 +44,3 @@ class UsersService extends BaseService
         }
     }
 }
-?>

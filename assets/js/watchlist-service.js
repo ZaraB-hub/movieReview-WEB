@@ -35,7 +35,8 @@ var WatchlistService = {
       dataType: "json",
       success: function(result) {
         console.log("Movie deleted from watchlist");
-        location.reload();
+        $("#movie-" + movieId).remove();
+
       },
       error: function(jqXHR, textStatus, errorThrown) {
         console.log("Error deleting movie from watchlist: " + errorThrown);

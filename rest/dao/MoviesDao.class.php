@@ -21,9 +21,7 @@ class MoviesDao extends BaseDao
 
     public function get_all()
     {
-        $stmt = $this->conn->prepare("SELECT * from MOVIES order by CreatedTimestamp desc");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->query("SELECT * FROM movies order by CreatedTimestamp DESC ", []);
     }
 
     public function get_genre($genre)
@@ -38,10 +36,8 @@ class MoviesDao extends BaseDao
 
     public function get_trending()
     {
-        $sql = "SELECT * FROM Movies
-        ORDER BY Views desc";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->query_unique("SELECT * FROM Movies  ORDER BY Views desc",[]);
     }
 }
+
+

@@ -1,8 +1,10 @@
 <?php
 require_once 'BaseService.php';
 
-class ReviewsService extends BaseService{
-    public function __construct(){
+class ReviewsService extends BaseService
+{
+    public function __construct()
+    {
         parent::__construct(new ReviewsDao());
     } 
 
@@ -17,4 +19,3 @@ class ReviewsService extends BaseService{
         return $this->dao_object->addReview($data);
     }
 }
-?>

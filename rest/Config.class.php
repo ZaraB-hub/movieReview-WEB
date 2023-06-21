@@ -19,6 +19,5 @@ class Config {
 
     public static function JWT_SECRET(){
         return "some_secret";
-      }
+    }
 }
-?>

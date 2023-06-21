@@ -1,9 +1,11 @@
 <?php
 require_once "BaseDao.php";
 
-class Watchlist_MovieDao extends BaseDao {
+class Watchlist_MovieDao extends BaseDao 
+{
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct("watchlists_movies");
     }
 
@@ -29,7 +31,7 @@ class Watchlist_MovieDao extends BaseDao {
         return $entity;
     }
 
-    public function deleteMovie($w,$id)
+    public function deleteMovie($w, $id)
     {    
         return $this->query("DELETE FROM watchlists_movies WHERE MoviesID = :id and  WatchlistsID = :w", ["id" => $id,"w"=>$w]);
 

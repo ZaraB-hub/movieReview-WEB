@@ -1,9 +1,11 @@
 <?php
 require_once "BaseDao.php";
 
-class Movie_ActorDao extends BaseDao {
+class Movie_ActorDao extends BaseDao
+{
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct("movie_actor");
     }
 
@@ -15,4 +17,3 @@ class Movie_ActorDao extends BaseDao {
         return $this->query("SELECT * FROM movie_actor WHERE MovieID = :id", ["id" => $id]);
     }
 }
-?>

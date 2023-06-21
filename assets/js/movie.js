@@ -42,7 +42,7 @@ $(function () {
                         ;
                         var castHtml = `
               <div class="one-cast d-flex align-items-start me-5 mb-5">
-                <img src="${data.image}" style="width: 150px; height: 210px; object-fit: cover;" alt="">
+                <img src="${data.image}" style="width: 150px; height: 310px; object-fit: cover;" alt="">
                 <a href="#actor" data-id="${data.ActorsID}" class="person-link">
                   <h5 class="ms-2">${data.FirstName + " " + data.LastName}</h5>
                 </a>

@@ -11,8 +11,3 @@ Flight::route('/actors/name/@name', function ($name) {
 Flight::route('/actors/@id', function ($id) {
     FLight::json(Flight::actors_service()->get_by_id($id));
 });
-
-
-
-
-

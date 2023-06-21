@@ -1,9 +1,11 @@
 <?php
 require_once "BaseDao.php";
 
-class Movie_GenreDao extends BaseDao {
+class Movie_GenreDao extends BaseDao 
+{
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct("movie_genre");
     }
 
@@ -14,4 +16,3 @@ class Movie_GenreDao extends BaseDao {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
-?>

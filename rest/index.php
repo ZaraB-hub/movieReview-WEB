@@ -81,4 +81,3 @@ Flight::register('db', 'PDO', array('mysql:host=localhost;dbname=zmdb','root','u
 
 Flight::start();
 
-?>

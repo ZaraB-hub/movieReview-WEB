@@ -7,4 +7,3 @@ class DirectorsDao extends BaseDao {
         parent::__construct("directors");
     }
 }
-?>
