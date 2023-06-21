@@ -64,6 +64,9 @@ var Signup = {
       dataType: "json",
       success: function (result) {
         Signup.createWatchlist(result);
+        setTimeout(() => {
+          console.log("Delayed for 1 second.");
+        }, 500); 
         window.location.replace("login.html");
       },
     });
@@ -79,7 +82,7 @@ var Signup = {
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        
+        localStorage.setItem("watchlist", result.id);
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.log("error");

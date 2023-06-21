@@ -6,7 +6,6 @@ $(document).ready(function () {
         if (data.length === 0) {
             $("#reviews-container").append("<h4 class='pt-4 m-auto pb-5'> No reviews made yet. Be the first one to review this movie</h4>");
         } else {
-            // Iterate over each review in the data
             data.forEach(function (review) {
                 $.get("rest/users/" + review.UsersID, function (user) {
                     var deleteButtonHtml = (review.UsersID === loggedInUserId) ? `<i class="bi bi-x-square " onclick=ReviewService.delete(${review.ReviewsID}) data-review-id="${review.ReviewsID}" style="cursor:pointer" ></i>` : "";
@@ -28,7 +27,6 @@ $(document).ready(function () {
                 `;
                 
 
-                    // Append the review HTML to the reviews container
                     $("#reviews-container").append(reviewHtml);
                 });
             });

@@ -21,5 +21,3 @@ Flight::route('/movies/@title', function ($title) {
 });
 
 
-
-
