@@ -56,7 +56,6 @@ var Signup = {
     });
   },
   addUser: function (user) {
-    console.log("post");
     $.ajax({
       url: "rest/users",
       type: "POST",
@@ -65,13 +64,11 @@ var Signup = {
       dataType: "json",
       success: function (result) {
         Signup.createWatchlist(result);
-        toastr.success('Have fun storming the castle!');
         window.location.replace("login.html");
       },
     });
   },
   createWatchlist: function (result) {
-    console.log(result);
     var watchlistData = {
       UsersID: result.id 
     }
@@ -82,8 +79,7 @@ var Signup = {
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        console.log("added");
-        console.log(result);
+        
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.log("error");

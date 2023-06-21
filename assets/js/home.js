@@ -37,83 +37,54 @@ function getHome() {
                 } else if (routeURL === "rest/wm/list/14") {
                     for (var i = 0; i < data.length; i++) {
                         $.get("rest/movies/id/" + data[i].MoviesID, function (movie) {
-                            console.log(movie)
-                            var cardContainer = $("<div>").addClass("card card-container rounded").attr("id", "section-heading")
-                            var cardImage = $("<img>").addClass("card-img-top card-img-container").attr("src", "").attr("data-id", movie.MoviesID);;
-                            var cardBody = $("<div>").addClass("card-body rounded-bottom border-0 card-body-container text-white");
-                            var rating = $("<h6>").html("<span><i class='fa fa-star fa-xl' style='width: 13%; color: red;'></i>" + movie.AvgRating + "</h6>");
-                            var title = $("<h5>").addClass("card-title pb-3 text-truncate title-section").text(movie.Title).attr("data-id", movie.MoviesID);
-                            var watchlistBtn = $("<button>").addClass("btn btn-primary w-100 btn-card")
-                                .html("<span><i class='fa fa-plus fa-xl pe-2'></i></span>Watchlist");
-                            cardContainer.append(cardImage, cardBody);
-                            cardBody.append(rating, title, watchlistBtn);
-
-                            // Append the card container to the cardGroup
-                            cardGroup.append(cardContainer);
-
-                            cardImage.click(function () {
-                                var movieId = $(this).attr("data-id");
-                                localStorage.setItem("selectedMovieId", movieId);
-                                window.location.href = "#movie";
-                            });
-
-                            title.click(function () {
-                                let movieId = $(this).attr("data-id");
-                                localStorage.setItem("selectedMovieId", movieId);
-                                window.location.href = "#movie";
-                            });
-
-                            watchlistBtn.click(function () {
-                                let movieId = $(this).siblings(".title-section").attr("data-id");
-                                WatchlistService.add(movieId,localStorage.get(watchlist));
-                            });
-                        });
-                    }
-                    sectionContainer.append(cardGroup)
+                    generateCardElements(movie, cardGroup);})}
+                    sectionContainer.append(cardGroup);
                 } else if (data.length === 0) {
-                        return;
-                    } else {
-                        data.forEach(function (movie) {
-                            if (cardGroup.children().length >= 5) {
-                                return; // Break the loop if more than 15 cards have been generated
-                            }
-                            // Generate the card elements and append them to the cardGroup
-                            var cardContainer = $("<div>").addClass("card card-container rounded").attr("id", "section-heading")
-                            var cardImage = $("<img>").addClass("card-img-top card-img-container").attr("src", "").attr("data-id", movie.MoviesID);;
-                            var cardBody = $("<div>").addClass("card-body rounded-bottom border-0 card-body-container text-white");
-                            var rating = $("<h6>").html("<span><i class='fa fa-star fa-xl' style='width: 13%; color: red;'></i>" + movie.AvgRating + "</h6>");
-                            var title = $("<h5>").addClass("card-title pb-3 text-truncate title-section").text(movie.Title).attr("data-id", movie.MoviesID);
-                            var watchlistBtn = $("<button>").addClass("btn btn-primary w-100 btn-card")
-                                .html("<span><i class='fa fa-plus fa-xl pe-2'></i></span>Watchlist");
-                            cardContainer.append(cardImage, cardBody);
-                            cardBody.append(rating, title, watchlistBtn);
+                    return;
+                } else {
+                    generateCardElements(data, cardGroup);
+                }
 
-                            // Append the card container to the cardGroup
-                            cardGroup.append(cardContainer);
-
-                            cardImage.click(function () {
-                                var movieId = $(this).attr("data-id");
-                                localStorage.setItem("selectedMovieId", movieId);
-                                window.location.href = "#movie";
-                            });
-
-                            title.click(function () {
-                                let movieId = $(this).attr("data-id");
-                                localStorage.setItem("selectedMovieId", movieId);
-                                window.location.href = "#movie";
-                            });
-
-                            watchlistBtn.click(function () {
-                                let movieId = $(this).siblings(".title-section").attr("data-id");
-                                WatchlistService.add(movieId,localStorage.getItem(watchlist));
-                            });
-                        });
-
-                        sectionContainer.append(cardGroup);
-                    }
-
-                    $(".home").append(sectionContainer);
-                });
+                sectionContainer.append(cardGroup);
+                $(".home").append(sectionContainer);
+            });
         })(route);
     }
+}
+
+function generateCardElements(data, cardGroup) {
+    data.forEach(function (movie) {
+        if (cardGroup.children().length >= 5) {
+            return; // Break the loop if more than 5 cards have been generated
+        }
+
+        var cardContainer = $("<div>").addClass("card card-container rounded").attr("id", "section-heading");
+        var cardImage = $("<img>").addClass("card-img-top card-img-container").attr("src", "").attr("data-id", movie.MoviesID);
+        var cardBody = $("<div>").addClass("card-body rounded-bottom border-0 card-body-container text-white");
+        var rating = $("<h6>").html("<span><i class='fa fa-star fa-xl' style='width: 13%; color: red;'></i>" + movie.AvgRating + "</h6>");
+        var title = $("<h5>").addClass("card-title pb-3 text-truncate title-section").text(movie.Title).attr("data-id", movie.MoviesID);
+        var watchlistBtn = $("<button>").addClass("btn btn-primary w-100 btn-card")
+            .html("<span><i class='fa fa-plus fa-xl pe-2'></i></span>Watchlist");
+        cardContainer.append(cardImage, cardBody);
+        cardBody.append(rating, title, watchlistBtn);
+
+        cardImage.click(function () {
+            var movieId = $(this).attr("data-id");
+            localStorage.setItem("selectedMovieId", movieId);
+            window.location.href = "#movie";
+        });
+
+        title.click(function () {
+            var movieId = $(this).attr("data-id");
+            localStorage.setItem("selectedMovieId", movieId);
+            window.location.href = "#movie";
+        });
+
+        watchlistBtn.click(function () {
+            var movieId = $(this).siblings(".title-section").attr("data-id");
+            WatchlistService.addMovie( localStorage.getItem("watchlist"),movieId);
+        });
+
+        cardGroup.append(cardContainer);
+    });
 }

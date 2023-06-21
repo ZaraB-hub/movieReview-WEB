@@ -40,11 +40,12 @@ $(function () {
         resultsContainer.show();
     }
 
-    // Event listener for search icon click
-    $("#search-icon").click(function (event) {
-        event.preventDefault();
-        performSearch();
-    });
+    // // Event listener for search icon click
+    // $("#search-icon").click(function (event) {
+    //     event.preventDefault();
+    //     performSearch();
+    //     window.location.href = "#search";
+    // });
 
     // Event listener for ENTER key press
     $("#search-input").keyup(function (event) {
@@ -59,9 +60,5 @@ $(function () {
         performSearch();
     });
 
-    // Event listener for form submit
-    $("form").submit(function (event) {
-        event.preventDefault();
-        performSearch();
-    });
+
 });
