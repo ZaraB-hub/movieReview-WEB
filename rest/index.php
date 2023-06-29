@@ -1,10 +1,9 @@
 <?php 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS, PATCH');
-require_once '../vendor/autoload.php';
 require_once './Config.class.php';
 require_once './Database.class.php';
-
+require_once '../vendor/autoload.php';
 
 require_once './services/ActorsService.php';
 require_once './routes/ActorsRoutes.php';

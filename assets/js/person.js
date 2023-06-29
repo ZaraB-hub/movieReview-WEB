@@ -1,20 +1,15 @@
 $(document).ready(function() {
-  // Fetch person data from the API
 
   var pid = localStorage.getItem("selectedPersonId");
   console.log(pid);
   $.get("rest/actors/"+pid, function(person) {
-    // Update person name
     $(".person_name").text(person.FirstName + " " + person.LastName);
 
-    // Update person image
     $(".img img").attr("src", person.image);
 
-    // Update person bio
     $(".bio").text(person.bio);
   });
 
-  // Fetch credits data from the API
   $.get("rest/actor/"+pid+"/movies", function(credits) {
     credits.forEach(function(credit) {
       var movieID = credit.MovieID;
@@ -31,7 +26,6 @@ $(document).ready(function() {
           </div>
         `;
 
-        // Append the credit HTML to the credit container
         $(".credit_container").append(creditHtml);
       });
     });

@@ -1,6 +1,5 @@
 var ReviewService = {
     init: function () {
-        // Initialization code here, if needed
     },
 
     create: function (entity) {
@@ -29,7 +28,6 @@ var ReviewService = {
                 console.log(result);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                toastr.error(XMLHttpRequest.responseJSON.message);
             },
         });
     },
