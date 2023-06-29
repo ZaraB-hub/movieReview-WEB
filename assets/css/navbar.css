@@ -1,11 +1,8 @@
-
+/* 
 .navbar {
     border-bottom: 1px solid black;
 }
 
-#row {
-    gap:120px;
-}
 
 
 .nav-link {
@@ -14,25 +11,21 @@
     padding: 4px;
     border: transparent;
     font-weight: 600;
+    text-decoration: none;
 }
 
-.nav-link:hover {
+/* .nav-link:hover {
     color: white;
     background-color: grey;
     border-radius: 6px;
-
-}
+} */
 
 .line {
-    color: rgb(69, 68, 68);
-    border-left: 2px solid grey;
+    border-left: 2.6px solid rgb(124, 122, 122);
 }
 
-#nav-login {
-    display: flex;
-    gap: 10px;
 
-}
+/* 
 
 #search-icon:hover {
     color: black;
@@ -74,4 +67,4 @@
 
 .movie-link:hover{
     text-decoration: underline;
-}
+} */ 
