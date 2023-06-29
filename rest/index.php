@@ -63,7 +63,6 @@ require_once './dao/WatchlistsDao.class.php';
 Flight::register('watchlists_dao','WatchlistsDao');
 Flight::register('watchlists_service','WatchlistsService');
 
-
 require_once './services/Watchlist_MovieService.php';
 require_once './routes/Watchlist_MovieRoutes.php';
 require_once './dao/Watchlist_MovieDao.class.php';
@@ -74,6 +73,12 @@ require_once './routes/ReviewsRoutes.php';
 require_once './dao/ReviewsDao.class.php';
 Flight::register('reviews_dao','ReviewsDao');
 Flight::register('reviews_service','ReviewsService');
+
+require_once './services/RatingsService.php';
+require_once './routes/RatingsRoutes.php';
+require_once './dao/RatingsDao.class.php';
+Flight::register('ratings_dao','RatingsDao');
+Flight::register('ratings_service','RatingsService');
 
 
 Flight::register('db', 'PDO', array('mysql:host=localhost;dbname=zmdb','root','uniburch'));
