@@ -11,7 +11,7 @@ class WatchlistsDao extends BaseDao
 
     function getWatchlistByUser($id)
     {
-        return $this->query("SELECT * FROM watchlists WHERE UsersID = :id", ["id" => $id]);
+        return $this->query_unique("SELECT * FROM watchlists WHERE UsersID = :id", ["id" => $id]);
     }
     
 

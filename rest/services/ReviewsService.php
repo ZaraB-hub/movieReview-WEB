@@ -14,8 +14,4 @@ class ReviewsService extends BaseService
         return $this->dao_object->get_by_movie_id($id);
     }
 
-    function addReview($data)
-    {
-        return $this->dao_object->addReview($data);
-    }
 }

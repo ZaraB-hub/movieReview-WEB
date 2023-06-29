@@ -22,16 +22,10 @@ Flight::route('POST /email', function () {
   Flight::json(Flight::users_service()->addEmail($data));
 });
 
-Flight::route('POST /username', function () {
-  $data = Flight::request()->data->getData();
-  Flight::json(Flight::users_service()->addUsername($data));
-});
-
 Flight::route('PUT /users/@id', function ($id) {
   $data = Flight::request()->data->getData();
   Flight::users_service()->update($id, $data,"UsersID");
 });
-
 
 Flight::route('DELETE /users/@id', function ($id) {
   Flight::users_service()->delete($id,"UsersID");

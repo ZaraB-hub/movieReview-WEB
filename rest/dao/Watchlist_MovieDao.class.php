@@ -34,7 +34,6 @@ class Watchlist_MovieDao extends BaseDao
     public function deleteMovie($w, $id)
     {    
         return $this->query("DELETE FROM watchlists_movies WHERE MoviesID = :id and  WatchlistsID = :w", ["id" => $id,"w"=>$w]);
-
     }
 
     

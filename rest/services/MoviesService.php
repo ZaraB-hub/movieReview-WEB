@@ -21,7 +21,6 @@ class MoviesService extends BaseService
     public function get_trending()
     {
         return $this->dao_object->get_trending();
-
     }
     
 }

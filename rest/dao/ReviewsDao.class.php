@@ -16,20 +16,20 @@ class ReviewsDao extends BaseDao
     }
 
 
-    function addReview($data)
-    {
-        $userID = $data['UsersID'];
-        $moviesID = $data['MoviesID'];
-        $comment = $data['Comment'];
+    // function addReview($data)
+    // {
+    //     $userID = $data['UsersID'];
+    //     $moviesID = $data['MoviesID'];
+    //     $comment = $data['Comment'];
 
-        return $this->query("INSERT INTO reviews (UsersID, MoviesID, Comment) VALUES (:userID, :moviesID, :comment)",
-            [
-                "userID" => $userID,
-                "moviesID" => $moviesID,
-                "comment" => $comment
-            ]
-        );
-    }
+    //     return $this->query("INSERT INTO reviews (UsersID, MoviesID, Comment) VALUES (:userID, :moviesID, :comment)",
+    //         [
+    //             "userID" => $userID,
+    //             "moviesID" => $moviesID,
+    //             "comment" => $comment
+    //         ]
+    //     );
+    // }
 
     
     
