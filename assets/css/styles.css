@@ -8,13 +8,16 @@
 }
 
 :root {
-    --accent-color: #3adedf;
+    --accent-color: #24eaea;
+    --accent-color2:rgb(122,228,230);
     --light-accent:#92eced;
     --medium-accent:#66e5e6;
     --pane-padding: 5px 42px;
     --bg-color:rgb(28, 31, 33);
     --blackish:#1a1a1a;
     --fade-black:rgb(44,44,44);
+    --n_black:#221f1f;
+    --n_white:#f5f5f1;
     --yellow:#F5C52B;
 
 }

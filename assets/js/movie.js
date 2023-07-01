@@ -1,9 +1,7 @@
 $(function () {
-    var currentUrl = window.location.href;
     var movieId = localStorage.getItem("selectedMovieId");
 
-    if (currentUrl.includes("#movie") && movieId) {
-        $.get("rest/movies/id/"+movieId, function (data) {
+        $.get("rest/movies/"+movieId, function (data) {
             console.log(data,"data");
             var duration = data.Duration
             var parts = duration.split(":");
@@ -74,4 +72,4 @@ $(function () {
 
 
 
-});
+);

@@ -24,8 +24,24 @@
     border-left: 2.6px solid rgb(124, 122, 122);
 }
 
+.no-link {
+  text-decoration: none;
+  color: inherit;
+}
 
-/* 
+.no-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dropdown-menu-left {
+  margin-left: -50px; /* Adjust the value as per your preference */
+}
+
+.bg_hover:hover{
+    background-color: rgb(53, 54, 54);
+        border-radius: 8px;
+}/* 
 
 #search-icon:hover {
     color: black;
@@ -67,4 +83,4 @@
 
 .movie-link:hover{
     text-decoration: underline;
-} */ 
+} */
