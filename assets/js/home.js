@@ -16,7 +16,7 @@ function getHome() {
             var $sectionTitle = $("<h3>").text(route);
             $sectionContainer.append($sectionTitle);
 
-            var $cardGroup = $("<div>").addClass("card-group d-flex flex-nowrap overflow-auto pb-1 scroll-behavior");
+            var $cardGroup = $("<div>").addClass("card-group d-flex flex-nowrap overflow-auto scroll-behavior");
 
             $.get(routeURL, function (data) {
                 if (isAuthenticated && routeURL === "rest/wm/list/14" && data.length === 0) {
@@ -48,25 +48,25 @@ function getHome() {
 
 function generateCardElements(data, $cardGroup) {
     data.forEach(function (movie) {
-        if ($cardGroup.children().length >= 5) {
+        if ($cardGroup.children().length >= 7) {
             return; 
         }
 
-        var $cardContainer = $("<div>").addClass("card card-container rounded").attr("id", "section-heading");
-        var $cardImage = $("<img>").addClass("card-img-top card-img-container").attr("src", movie.Image);
-        var $cardBody = $("<div>").addClass("card-body rounded-bottom border-0 card-body-container text-white");
-        var $rating = $("<h6>").html("<span><i class='fa fa-star fa-xl' style='width: 13%; color: red;'></i>" + movie.AvgRating + "</h6>");
-        var $title = $("<h5>").addClass("card-title pb-3 text-truncate title-section").text(movie.Title).attr("data-id", movie.MoviesID);
-        var $watchlistBtn = $("<button>").addClass("btn btn-primary w-100 btn-card")
+        var $cardContainer = $("<div>").addClass("card-container mb-5   rounded border border-dark").attr("id", "section-heading");
+        var $cardImage = $("<img>").addClass("card-img-container").attr("src",movie.Image);
+        var $cardBody = $("<div>").addClass(" card-body-container text-white p-2");
+        var $rating = $("<h6>").html("<span><i class='fa fa-star fa-xl pe-2' style='color:yellowe;' ;></i>" + movie.AvgRating + "</h6>").addClass("opacity-75");
+        var $title = $("<h5>").addClass("card-title py-2 ").text(movie.Title).attr("data-id", movie.MoviesID);
+        var $watchlistBtn = $("<button>").addClass("btn btn-secondary w-100 mt-2")
             .html("<span><i class='fa fa-plus fa-xl pe-2'></i></span>Watchlist");
         $cardContainer.append($cardImage, $cardBody);
         $cardBody.append($rating, $title, $watchlistBtn);
 
-        $cardImage.click(function () {
-            var movieId = $(this).attr("data-id");
-            localStorage.setItem("selectedMovieId", movieId);
-            window.location.href = "#movie";
-        });
+        // $cardImage.click(function () {
+        //     var movieId = $(this).attr("data-id");
+        //     localStorage.setItem("selectedMovieId", movieId);
+            
+        // });
 
         $title.click(function () {
             var movieId = $(this).attr("data-id");
