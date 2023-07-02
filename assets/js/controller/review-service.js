@@ -13,10 +13,10 @@ var ReviewService = {
                 data.forEach(function (review) {
                     // console.log(review);
                     $.get("rest/users/" + review.UsersID, function (user) {
-                        var deleteButtonHtml = (review.UsersID === Utils.parseJwt(localStorage.getItem("user_token")).UsersID) ? `<i class="bi bi-x-square " onclick=ReviewService.delete(${review.ReviewsID}) data-review-id="${review.ReviewsID}" style="cursor:pointer" ></i>` : "";
+                      //  var deleteButtonHtml = (review.UsersID === Utils.parseJwt(localStorage.getItem("user_token")).UsersID) ? `<i class="bi bi-x-square " onclick=ReviewService.delete(${review.ReviewsID}) data-review-id="${review.ReviewsID}" style="cursor:pointer" ></i>` : "";
                         var reviewHtml = `
-                        <div class="review d-flex p-2 border-bottom ">
-                            <img src="./assets/pics/images.jfif" alt="" width="50px" height="50px">
+                        <div class="review d-flex p-2 border-bottom  ">
+                            <img src="./assets/pics/dragon.jpg" alt="" width="70px" height="70px" class="rounded">
                             <div class="d-flex" style="flex-grow: 1;">
                                 <div style="flex-grow: 1;">
                                     <div class="person-info m-1 ms-2">
