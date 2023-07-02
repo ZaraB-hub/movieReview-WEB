@@ -1,6 +1,4 @@
 var Utils = {
-
-
     parseJwt: function (token) {
         if (token) {
             var base64Url = token.split(".")[1];
