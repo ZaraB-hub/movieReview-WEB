@@ -1,81 +1,73 @@
-<h1 class="movie-title"></h1>
-<div class="sub d-flex justify-content-between pb-1">
-    <div class="meta d-flex">
-        <p class="year"></p>
-        <i class="bi bi-dot"></i>
-        <p class="content-rating"></p>
-        <i class="bi bi-dot"></i>
-        <p class="duration"></p>
-        <i class="bi bi-dot"></i>
-        <p class="category"></p>
+<div class="bg_b px-2">
+    
+    <div class="m-container d-flex">
+        <div class="m-img rounded me-5 m-2">
+            <img class="m_img"  alt="">
+        </div>
+        <div class="m-data d-flex flex-column justify-content-center flex-grow-1">
+    
+            <h1 class="fw-semibold movie-title"></h1>
+            <div class="meta d-flex opacity-75">
+                <p class="year"></p>
+                <i class="bi bi-dot"></i>
+                <p class="content-rating"></p>
+                <i class="bi bi-dot"></i>
+                <p class="duration"></p>
+                <i class="bi bi-dot"></i>
+                <p class="category"></p>
+            </div>
+            <div class="d-flex  flex-column pb-3">
+                <h5 class="pe-2">Flixpedia rating: <i class="bi bi-star yellow"></i> 4.7/10 </h5>
+                <h5>Your rating: <i class="bi bi-star"></i> Rate</h5>
+            </div>
+    
+            <div class="minus">
+                <h6 class="fw-semibold">Overview</h6>
+                <p class="plot pe-4"></p>
+            </div>
+            <div class="minus">
+                <h6 class="fw-semibold   ">Director</h6>
+                <p class="">Quentin Tarantino</p>
+            </div>
+            <button type="button" id="watchlistBtn" class="btn-dark btn w-25">
+                <i class='fa fa-plus fa-xl pe-2 me-1'></i>
+                Add to Watchlist
+            </button>
+    
+        </div>
     </div>
-    <!-- <i class="bi bi-share"></i> -->
+    
+    
+    <section class="cast-section">
+        <div class="cast-container d-flex flex-wrap  mt-3">
+        </div>
+    </section>
+    
+    
+    <section class="review-section mb-5  bg_b">
+        <h2 class="mt-4">Reviews</h2>
+        <form id="reviewForm">
+            <textarea type="text-area" class="m-4 p-2" name="review" id="review"
+                style="color:black;width: 80%;  height:5rem; " placeholder="Start writing your review"></textarea>
+            <button type="" class="btn btn-dark mb-3 comment"> Comment</button>
+        </form>
+        <div id="reviews-container" class="reviews-container mb-5 border-top border-start border-end d-flex flex-column">
+        </div>
+    </section>
 </div>
-<section class="info-section">
-    <div class="main-heading d-flex justify-content-around">
+    <script>
+    $(".comment").on("click", function (e) {
+            e.preventDefault();
+            var entity = {
+                MoviesID: localStorage.getItem("selectedMovieId"),
+                Comment: $("textarea").val()
+            };
+            ReviewService.create(entity);
+            $("textarea").val("");
+        });
 
-        <div id="movie-poster" class="d-flex flex-column w-50">
-            <img class="object-fit-cover djg w-75" style="width: 250px; height:600px; object-fit: scale-down;"
-                src="">
+        ReviewService.init();
+    </script>
+    
+    
 
-        </div>
-
-
-        <div id="movie-details" class=" d-flex flex-column justify-content-around ">
-            <!-- <div id="rating" class="d-flex mb-3">
-                <div class="number square p-1">
-                    <h3><span class="rn"></span><sub>/10</sub></h3>
-                </div>
-                <div class="statistics d-flex flex-column justify-content-around border-bottom">
-                    <h5 class="f-16">Your rating: <i class="bi bi-star"></i> <span class="f-12 ">0/10</span></h5>
-                    <h5 class="f-16">Fixpedia Rating:<span class="f-12 "> <span class="rn"></span>/10 from 63,580 users</span> </h5>
-                    <h5 class="f-16">Reviews: <span class="f-12"> 64 users</span></h5>
-                </div>
-            </div> -->
-            <div class="plot w-50 py-1">
-                <p class=" lh-md plot"></p>
-            </div>
-            <div class="buttons w-50">
-                <!-- <button class=" btn w-75 mt-3 my-2 btn-outline-light "><i class="bi bi-play me-1"></i>Watch Trailer</button> -->
-                <button type="button" id="watchlistBtn" class="btn-dark btn"><i class='fa fa-plus fa-xl pe-2 me-1'></i>
-                    Add to Watchlist</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="cast-section">
-    <h2 class="mt-5 mb-4 ">Cast</h2>
-    <div class="cast-container d-flex flex-wrap  mt-3">
-        <!-- <div class="one-cast d-flex align-items-start me-5 mb-5">
-            <img src="https://i.mydramalist.com/B0e75s.jpg" alt="">
-            <h5 class="ms-2">Jeniffer Lowrence</h5>
-        </div> -->
-    </div>
-    <!-- <button class=" btn btn-outline-light ">Show more</button> -->
-</section>
-
-<section class="review-section mb-5">
-    <h2 class="mt-4">Reviews</h2>
-    <form id="reviewForm">
-        <textarea type="text-area" class="m-4 p-2" name="review" id="review"
-            style="color:black;width: 80%;  height:5rem; " placeholder="Start writing your review"></textarea>
-        <button type="" class="btn btn-dark mb-3 comment"> Comment</button>
-    </form>
-    <div id="reviews-container" class="reviews-container mb-5 border-top border-end border-start d-flex flex-column">
-    </div>
-    <!-- <button id="show-more-btn" class="btn btn-outline-light mb-4">Show more</button> -->
-</section>
-
-<script> 
-$(".comment").on("click", function (e) {
-        e.preventDefault();
-        var entity = {
-            MoviesID: localStorage.getItem("selectedMovieId"),
-            Comment: $("textarea").val()
-        };
-
-        ReviewService.create(entity);
-        $("textarea").val("");
-    });
-</script>
