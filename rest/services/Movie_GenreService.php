@@ -9,4 +9,9 @@ class Movie_GenreService extends BaseService
     } 
 
     
+    function getGenres($movieID)
+    {
+        return $this->dao_object->getGenres($movieID);
+    }
+    
 }

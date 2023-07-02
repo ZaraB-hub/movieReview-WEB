@@ -9,10 +9,8 @@ class Movie_GenreDao extends BaseDao
         parent::__construct("movie_genre");
     }
 
-    public function get_by_id($id)
+    function getGenres($movieID)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM movie_genre where MovieId=:id");
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->query("SELECT * FROM movie_genre WHERE MovieID = :movieID", ["movieID" => $movieID]);
     }
 }

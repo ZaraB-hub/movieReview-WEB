@@ -4,7 +4,7 @@ Flight::route('GET /reviews', function () {
     FLight::json(Flight::reviews_service()->get_all());
 });
 
-Flight::route('/reviews/movie/@id', function ($id) {
+Flight::route('GET /reviews/movie/@id', function ($id) {
     FLight::json(Flight::reviews_service()->get_by_movie_id($id));
 });
 

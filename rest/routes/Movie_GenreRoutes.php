@@ -5,7 +5,7 @@ Flight::route('/moviegenre', function () {
 });
 
 Flight::route('/moviegenre/@id', function ($id) {
-    FLight::json(Flight::movie_genre_service()->get_by_id($id));
+    FLight::json(Flight::movie_genre_service()->getGenres($id));
 });
 
 
