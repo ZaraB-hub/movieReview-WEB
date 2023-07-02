@@ -9,9 +9,13 @@ class RatingsService extends BaseService
     } 
 
 
-    function get_by_movie_id($id)
+    function get_avg_by_movie($id)
     {
-        return $this->dao_object->get_by_movie_id($id);
+        return $this->dao_object->get_avg_by_movie($id);
+    }
+
+    function get_user_rating($movieID,$userID){
+        return $this->dao_object->get_user_rating($movieID,$userID);
     }
 
 }

@@ -4,6 +4,14 @@ Flight::route('GET /ratings', function () {
     FLight::json(Flight::ratings_service()->get_all());
 });
 
+Flight::route('GET /ratings/@movieID', function ($movieID) {
+    FLight::json(Flight::ratings_service()->get_avg_by_movie($movieID));
+});
+
+Flight::route('GET /ratings/@movieID/@userID', function ($movieID,$userID) {
+    FLight::json(Flight::ratings_service()->get_user_rating($movieID,$userID));
+});
+
 Flight::route('POST /ratings', function () {
     $data = Flight::request()->data->getData();
     Flight::json(Flight::ratings_service()->add($data));
