@@ -1,4 +1,4 @@
-var Person = {
+var Actor = {
     init: function () {
         var personId = localStorage.getItem("selectedPersonId");
 
