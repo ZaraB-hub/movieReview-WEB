@@ -1,35 +1,88 @@
-.djg {
-    max-height: 340px;
-}
 
-.number.square {
-    width: 100px;
-    height: 100px;
-    background-color: var(--bs-gray-900);
-}
-
-.number.square>* {
-    text-align: center;
-    vertical-align: middle;
-    line-height: 90px;
-}
-
-#movie-details{
-    display: flex;
-}
-
-.f-16 {
-    font-size: 16px;
-}
-
-.f-12 {
-    font-size: 14px;
-    color: var(--bs-gray-300);
+.m-container {
+  position: relative  ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #121212c5;
 
 }
 
-#rating{
-    gap:15px;
+.bg_b{
+    background-color: #121212c5;
+}
+
+/* .m-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:rgba(255, 0, 0, 0.855);
+} */
+
+
+.m-img{
+    width: 400px;
+    height: 500px;
+    border-radius: 7px;
+
+
+}
+
+.bi-star::before {
+    color: yellow;
+  }
+
+
+.m-img>img{
+    max-width: 100%;
+    max-height: 100%; 
+    object-fit: contain;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.259);
+    
+}
+
+.clas{
+    width: 140px;
+    height: 273px;
+}
+
+.celeb_img{
+    width: 140px;
+    
+
+}
+.celeb_img>img{
+    max-width: 100%;
+    max-height: 100%; 
+    object-fit: contain;
+    border-radius: 8px 8px 0 0;
+    transition: filter 0.3s ease; /* Add transition for a smooth effect */
+}
+
+.celeb_img > img:hover {
+  filter: brightness(50%); /* Adjust the brightness value as desired */
+}
+
+
+
+.celeb_info{
+    background: #ded9d9;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.minus>h6{
+position: relative;
+top: 10px;
+}
+
+.gap10{
+    gap: 10px;
 }
 
 .plot{

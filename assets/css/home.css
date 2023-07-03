@@ -1,52 +1,117 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-.section{
-    color:var(--n_white);    
+.section {
+    color: var(--n_white);
     display: flex;
     flex-direction: column;
-    gap: 15px;    
+    gap: 15px;
+}
+
+.section_title{
+    font-size: 36px;
 }
 
 
-.card-group{
+
+.carousel-inner  > .carousel-item >img {
+    
+    height:460px;
+   
+  }
+
+.card-group {
     gap: 14px;
 }
 
-.card-container{
+.card-container {
     max-height: 360px;
     max-width: 220px;
     min-width: 220px;
-
     min-height: 340px;
 }
 
-.card-container:hover{
-    color: red;
-}
-
-.card-img-container{
+.card-img-container {
     height: 58%;
     width: 100%;
 }
 
-.card-body-container{
+.card-body-container {
     height: 42%;
-    background-color: rgb(26,26,26);
-    
+    background-color: rgb(26, 26, 26);
+
 }
-.card-title{
+
+.card-title {
     height: 45%;
     font-size: 17px;
     font-weight: 600;
-}
+    font-family: 'Poppins', sans-serif;}
+
 .scroll-behavior {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-}
-.scroll-behavior::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
-.card-title:hover{
- text-decoration: underline;
- cursor: pointer;
+.scroll-behavior::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+.card-title:hover {
+    color: var(--accent-color2);
+    cursor: pointer;
+}
+
+/* .movie-card img:hover { 
+    filter: brightness(70%); } */
+
+.movie-card .card-banner {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: var(--transition-1);
+    cursor: pointer;
+}
+
+.movie-card .card-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.movie-card .card-banner:hover {
+    box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.5);
+}
+
+.movie-card .card-banner:hover::after {
+    background: hsla(0, 0%, 100%, 0.05);
+}
+.movie-card .card-banner>img {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.year_duration{
+    color: var(--accent-color2);
+}
+
+.card-banner button {
+  position: absolute;
+  top: 4%;
+  left:92%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(65, 64, 64);
+  border: none;
+  opacity: 0.8;
+}
+
+.card-banner button:hover {
+    
+    background-color: rgb(46, 43, 43);
+    opacity: 1;
 }

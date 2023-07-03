@@ -22,6 +22,11 @@
 
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
 body {
-    background-color:black
+    background-color: rgb(10, 9, 9);
+    font-family: 'Montserrat', sans-serif;
 }
+
