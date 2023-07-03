@@ -1,13 +1,13 @@
-function getHome() {
+var Home={
+    init:function(){
     var routes = {
-        "From Your Watchlist": "rest/wm/list/14",
+        "From Your Watchlist": "rest/wm/list/36",
         "Family Film Night": "rest/movies/genre/family",
         "Recently Added": "rest/movies/",
-        "Comedies": "rest/movies/genre/comedy",
+        "Comedies": "rest/movies/genre/dramas",
     };
 
     var token = localStorage.getItem("user_token");
-    var isAuthenticated = token !== null;
 
     for (var route in routes) {
         (function (route) {
@@ -19,39 +19,45 @@ function getHome() {
             var $cardGroup = $("<div>").addClass("card-group d-flex flex-nowrap overflow-auto scroll-behavior");
 
             $.get(routeURL, function (data) {
-                if (isAuthenticated && routeURL === "rest/wm/list/14" && data.length === 0) {
+                if (token && routeURL.includes("wm/list") && data.length==0) {
                     var $message = $("<div>").addClass("p-3 mt-5 d-flex flex-column align-items-center").append(
                         $("<h2>").text("Your Watchlist is empty")).append(
                             $("<p>").text("Browse movies and keep track of what you watch"));
                     $sectionContainer.append($message);
-                } else if (!isAuthenticated && routeURL === "rest/movies/watchlist") {
+                } else if (!token && routeURL === "rest/movies/watchlist") {
                     var $signInMessage = $("<div>").addClass("p-3 mt-5 d-flex flex-column align-items-center").append(
                         $("<h2>").text("Sign in to keep track of your movies")).append(
                             $("<p>").text("Create an account or log in"));
                     $sectionContainer.append($signInMessage);
-                } else if (routeURL === "rest/wm/list/14") {
+                } else if (routeURL.includes("wm/list")) {
                     for (var i = 0; i < data.length; i++) {
-                        $.get("rest/movies/id/" + data[i].MoviesID, function (movie) {
-                    generateCardElements(movie, $cardGroup);})}
+                      $.get("rest/movies/" + data[i].MoviesID, function (movie) {
+                        var moviesArray = [movie]; 
+                        Home.generateCardElements(moviesArray, $cardGroup);
+                      });
+                    }
                     $sectionContainer.append($cardGroup);
-                } else if (data.length === 0) {
+                  }else if (data.length === 0) {
                     return;
                 } else {
-                    generateCardElements(data, $cardGroup);
+                    Home.generateCardElements(data, $cardGroup);
                 }
                 $sectionContainer.append($cardGroup);
                 $(".home").append($sectionContainer);
             });
         })(route);
     }
-}
+},
+getWatchlist:function(){
 
-function generateCardElements(data, $cardGroup) {
+},
+
+
+generateCardElements:function(data, $cardGroup) {
     data.forEach(function (movie) {
         if ($cardGroup.children().length >= 7) {
             return; 
         }
-
         var $cardContainer = $("<div>").addClass("card-container mb-5   rounded border border-dark").attr("id", "section-heading");
         var $cardImage = $("<img>").addClass("card-img-container").attr("src",movie.Image);
         var $cardBody = $("<div>").addClass(" card-body-container text-white p-2");
@@ -62,12 +68,6 @@ function generateCardElements(data, $cardGroup) {
         $cardContainer.append($cardImage, $cardBody);
         $cardBody.append($rating, $title, $watchlistBtn);
 
-        // $cardImage.click(function () {
-        //     var movieId = $(this).attr("data-id");
-        //     localStorage.setItem("selectedMovieId", movieId);
-            
-        // });
-
         $title.click(function () {
             var movieId = $(this).attr("data-id");
             localStorage.setItem("selectedMovieId", movieId);
@@ -75,10 +75,13 @@ function generateCardElements(data, $cardGroup) {
         });
 
         $watchlistBtn.click(function () {
-            var movieId = $(this).siblings(".title-section").attr("data-id");
+            var movieId = $title.attr("data-id");
+            console.log( localStorage.getItem("watchlist"),movieId);
             WatchlistService.addMovie( localStorage.getItem("watchlist"),movieId);
+            
         });
 
         $cardGroup.append($cardContainer);
     });
+}
 }
