@@ -1,7 +1,7 @@
 var Home={
     init:function(){
     var routes = {
-        "From Your Watchlist": "rest/wm/list/36",
+        "From Your Watchlist": "rest/wm/list/"+localStorage.getItem("watchlist"),
         "Family Film Night": "rest/movies/genre/family",
         "Recently Added": "rest/movies/",
         "Comedies": "rest/movies/genre/dramas",
@@ -48,11 +48,6 @@ var Home={
         })(route);
     }
 },
-getWatchlist:function(){
-
-},
-
-
 generateCardElements:function(data, $cardGroup) {
     data.forEach(function (movie) {
         if ($cardGroup.children().length >= 7) {
@@ -61,12 +56,12 @@ generateCardElements:function(data, $cardGroup) {
         var $cardContainer = $("<div>").addClass("card-container mb-5   rounded border border-dark").attr("id", "section-heading");
         var $cardImage = $("<img>").addClass("card-img-container").attr("src",movie.Image);
         var $cardBody = $("<div>").addClass(" card-body-container text-white p-2");
-        var $rating = $("<h6>").html("<span><i class='fa fa-star fa-xl pe-2' style='color:yellowe;' ;></i>" + movie.AvgRating + "</h6>").addClass("opacity-75");
+        // var $rating = $("<h6>").html("<span><i class='fa fa-star fa-xl pe-2' style='color:yellowe;' ;></i>" + movie.AvgRating + "</h6>").addClass("opacity-75");
         var $title = $("<h5>").addClass("card-title py-2 ").text(movie.Title).attr("data-id", movie.MoviesID);
         var $watchlistBtn = $("<button>").addClass("btn btn-secondary w-100 mt-2")
             .html("<span><i class='fa fa-plus fa-xl pe-2'></i></span>Watchlist");
         $cardContainer.append($cardImage, $cardBody);
-        $cardBody.append($rating, $title, $watchlistBtn);
+        $cardBody.append($title, $watchlistBtn);
 
         $title.click(function () {
             var movieId = $(this).attr("data-id");
