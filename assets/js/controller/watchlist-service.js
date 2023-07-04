@@ -11,8 +11,12 @@ var WatchlistService = {
         $watchlistContainer.empty();
 
         if (watchlistData.length === 0) {
-          const $h2 = $('<h3>').addClass("p-3 m4-4").text("Currently empty. Browse movies to add to your watchlist.");
+          const $h2 = $('<h3>').addClass(" pt-4 text-center").text("Your watchlist is empty.");
+          const $h5 = $('<h5>').addClass(" p-1 text-center").text("Browse movies to add to your watchlist.");
+
           $watchlistContainer.append($h2);
+          $watchlistContainer.append($h5);
+
           return;
         }
 
@@ -97,7 +101,7 @@ var WatchlistService = {
       dataType: "json",
       success: function (result) {
         console.log("Movie added to watchlist");
-        WatchlistService.getMovies();
+        WatchlistService.getWatchlist();
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.log("Error adding movie to watchlist: " + errorThrown);

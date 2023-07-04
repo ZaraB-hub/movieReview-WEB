@@ -20,7 +20,6 @@ var UserService = {
         contentType: "application/json",
         dataType: "json",
         success: function (result) {
-          console.log(result);
           localStorage.setItem("user_token", result.token);
           window.location.replace("index.html");
         },
@@ -47,12 +46,27 @@ var UserService = {
         );
       },
       type: "PUT",
-      data: JSON.stringify({ Username: entity.Username,Password:entity.Password,Email:entity.Email }),
+      data: JSON.stringify(entity),
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        console.log("updated");
-        localStorage.setItem("user_token", result.token);
+        console.log(result);
+        $.ajax({
+          url: "rest/token",
+          type: "POST",
+          data: JSON.stringify(result),
+          contentType: "application/json",
+          dataType: "json",
+          success:function(result){
+            console.log("token")
+            localStorage.setItem("user_token", result.token);
+            location.reload();
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("Error:", errorThrown, textStatus);
+            console.log("Response:", XMLHttpRequest.responseText); 
+          }
+          });
       },
       error: function (XMLHttpRequest, textStatus, errorThrown) {
         console.log("Error:", errorThrown, textStatus);

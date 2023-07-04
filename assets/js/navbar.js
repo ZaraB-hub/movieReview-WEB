@@ -1,4 +1,3 @@
-
 $(function () {
     var userSearchInput;
 
@@ -12,10 +11,6 @@ $(function () {
         $.get("rest/movies/" + userSearchInput, function (data) {
             displayResults(data);
         });
-
-        $.get("rest/actors/" + userSearchInput, function (data) {
-            
-        });
     }
 
     function displayResults(data) {
@@ -25,21 +20,34 @@ $(function () {
         if (data.length === 0) {
             $resultsContainer.text("No results found.");
         } else {
-            var $resultList = $("<ul>").addClass("movie-list");
+            var $resultList = $("<ul>").addClass("movie-list p-0 col list-unstyled");
 
-            data.forEach(function (movie) {
-                var $movieItem = $("<li>").addClass("movie-item");
+            var maxResults = 5; 
+            var displayedResults = data.slice(0, maxResults); 
+
+            displayedResults.forEach(function (movie) {
+                var $movieItem = $("<li>").addClass("movie-item col row border-bottom border-secondary m-1 py-1 unstyled").attr("data-id",movie.MoviesID);;
+                var $movieImg = $("<img>").addClass("col-5").attr("src", movie.Image).css({ width: "70px" });
+                var $movieBody = $("<div>").addClass("col");
                 var $movieLink = $("<a>")
-                .attr("href", "#movie")
-                .text(movie.Title + " (" + movie.ReleaseDate.substring(0, 4) + ")")
-                .addClass("movie-link")
-                .click(function() {
-                    localStorage.setItem("selectedMovieId",  movie.MoviesID);
-                });
+                    // .attr("href", "#movie")
+                    .text(movie.Title)
+                    .addClass("movie-link no-link py-2 fw-semibold")
+                  ;
+                var $movieYear = $("<p>").text(movie.ReleaseDate.substring(0, 4)).addClass("opacity-75");
 
-                $movieItem.append($movieLink);
+                $movieBody.append($movieLink, $movieYear);
+                $movieItem.append($movieImg, $movieBody);
                 $resultList.append($movieItem);
             });
+
+            if (data.length > maxResults) {
+                var $searchAllLink = $("<a>")
+                    .attr("href", "#search")
+                    .text("Search All Results for \"" + userSearchInput + "\"").addClass("no-link ps-2 pt-1 movie-item ")
+                    
+                $resultList.append($("<li>").append($searchAllLink));
+            }
 
             $resultsContainer.append($resultList);
         }
@@ -47,10 +55,7 @@ $(function () {
         $resultsContainer.show();
     }
 
-
     $("#search-input").on("input", function () {
         performSearch();
     });
-
-
 });

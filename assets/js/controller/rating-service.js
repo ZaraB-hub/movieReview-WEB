@@ -10,22 +10,13 @@ var RatingService = {
           });
           
           $.get("rest/ratings/" + movieId +"/"+userid, function(data) {
-            console.log("Data",data[0]);
-            var rating = data.length!=0 ? data[0].Rating + "/10" : "Rate";
+            var rating = data.length!=0 ? data[0].Rating + "/10" :  'Rate';
             $(".user_rating").text(rating);
         });
         
        
     },
     create: function (entity) {
-        console.log("yes sir");
-        var token = localStorage.getItem("user_token");
-        var user = Utils.parseJwt(token);
-        var payload = {
-            MoviesID: entity.MoviesID,
-            UsersID: user.UsersID,
-            Rating: entity.Rating
-        };
         $.ajax({
             url: "rest/ratings",
             beforeSend: function (xhr) {
@@ -39,19 +30,18 @@ var RatingService = {
             contentType: "application/json",
             dataType: "json",
             success: function (result) {
-                console.log(result,"sucess");
-                RatingService.getRatings(entity.MoviesID,entity.UsersID);
-                
+                $(".movie_modal").attr("data-id",result.id);
+                RatingService.getRatings(entity.MoviesID,entity.UsersID);   
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log(errorThrown);
+                console.log(errorThrown,textStatus);
             },
         });
     },
 
-    update: function (entity) {
+    update: function (entity,id) {
         $.ajax({
-            url: "rest/ratings",
+            url: "rest/ratings/"+id,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader(
                     "Authorization",
@@ -64,8 +54,7 @@ var RatingService = {
             dataType: "json",
             success: function (result) {
                 console.log(result,"sucess");
-                RatingService.getRatings(entity.MoviesID,entity.UsersID);
-                
+                RatingService.getRatings(entity.MoviesID,entity.UsersID);  
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(errorThrown);
