@@ -21,7 +21,12 @@
                 $password = Config::DB_PASSWORD();
                 $schema = Config::DB_SCHEMA();
                 $port=Config::DB_PORT();
-                $this->conn = new PDO("mysql:host=$servername;dbname=$schema;port=$port", $username, $password);
+                $options = array(
+                    PDO::MYSQL_ATTR_SSL_CA => "C:\Users\zarab\Downloads\ca-certificate.crt",
+                    PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+                );
+
+                $this->conn = new PDO("mysql:host=$servername;dbname=$schema;port=$port", $username, $password,$options);
                 $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 echo "Connection failed: " . $e->getMessage();
