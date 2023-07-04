@@ -23,14 +23,10 @@
 
 <script>
     WatchlistService.getWatchlist();
-
-// ... your existing code ...
-
-// Event delegation for dynamically created elements
-$(document).on("click", ".mm_tt", function() {
-  var movieId = $(this).attr("data-movie");
-            localStorage.setItem("selectedMovieId", movieId);
-            window.location.href = "#movie";
-});
+    $(document).on("click", ".mm_tt", function () {
+        var movieId = $(this).attr("data-movie");
+        localStorage.setItem("selectedMovieId", movieId);
+        window.location.href = "#movie";
+    });
 
 </script>

@@ -1,35 +1,35 @@
 <div class="bg_b px-2">
 
-  
-  <!-- Modal -->
-  <div class="modal fade " id="rateModal" tabindex="-1" aria-labelledby="rateModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-      <div class="modal-content" style="background-color: #1f1f1f;">
-        <div class="modal-header border-0">
-            <div class="modal-title text-center w-100 mt-2 d-flex flex-column" id="rateModalLabel">
-                <p style="font-size: 12px; color: var(--accent-color2);">RATE THIS</p>
-                <h5 class="text-center w-100 movie-title"></h5>
+
+    <!-- Modal -->
+    <div class="modal fade " id="rateModal" tabindex="-1" aria-labelledby="rateModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content movie_modal" data-id="0" style="background-color: #1f1f1f;">
+                <div class="modal-header border-0">
+                    <div class="modal-title text-center w-100 mt-2 d-flex flex-column" id="rateModalLabel">
+                        <p style="font-size: 12px; color: var(--accent-color2);">RATE THIS</p>
+                        <h5 class="text-center w-100 movie-title"></h5>
+                    </div>
+
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div id="rating1"></div>
+                </div>
+                <div class="modal-footer border-0 d-flex flex-column align-items-center justify-content-center">
+                    <button type="button" class="btn btn-secondary w-50 rate_btn">Rate</button>
+                    <button type="button" class="btn btn-secondary w-50 " data-bs-dismiss="modal">Remove Rating</button>
+                </div>
             </div>
-
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-center">
-            <div id="rating1"></div>
-        </div>
-        <div class="modal-footer border-0 d-flex flex-column align-items-center justify-content-center">
-          <button type="button" class="btn btn-secondary w-50 rate_btn">Rate</button>
-          <button type="button" class="btn btn-secondary w-50 " data-bs-dismiss="modal">Remove Rating</button>
-
-        </div>
-      </div>
     </div>
-  </div>
     <div class="m-container d-flex">
         <div class="m-img rounded me-5 m-2">
-            <img class="m_img"  alt="">
+            <img class="m_img" alt="">
         </div>
         <div class="m-data d-flex flex-column justify-content-center flex-grow-1">
-    
+
             <h1 class="fw-semibold movie-title"></h1>
             <div class="meta d-flex opacity-75">
                 <p class="year"></p>
@@ -41,10 +41,12 @@
                 <p class="category"></p>
             </div>
             <div class="d-flex  flex-column pb-3">
-                <h5 class="pe-2">Flixpedia rating: <i class="bi bi-star yellow"></i> <span class="flex_rating">4.7/10</span> </h5>
-                <h5>Your rating:<span type="button" data-bs-toggle="modal" data-bs-target="#rateModal" class="ps-1 user_rating bg_hover p-1 ms-1"> <i class="bi bi-star" ></i>  </span></h5>
+                <h5 class="pe-2">Flixpedia rating: <i class="bi bi-star yellow"></i> <span
+                        class="flex_rating">4.7/10</span> </h5>
+                <h5>Your rating: <i class="bi bi-star"></i><span type="button" data-bs-toggle="modal"
+                        data-bs-target="#rateModal" class="ps-1 user_rating bg_hover p-1 ms-1"> </span></h5>
             </div>
-    
+
             <div class="minus">
                 <h6 class="fw-semibold">Overview</h6>
                 <p class="plot pe-4"></p>
@@ -57,64 +59,78 @@
                 <i class='fa fa-plus fa-xl pe-2 me-1'></i>
                 Add to Watchlist
             </button>
-    
+
         </div>
     </div>
-    
-    
+
+
     <section class="cast-section">
         <div class="cast-container d-flex flex-wrap  mt-3">
         </div>
     </section>
-    
-    
-    <section class="review-section mb-5  bg_b">
+
+
+    <section class="review-section pb-5 bg_b">
         <h2 class="mt-4">Reviews</h2>
         <form id="reviewForm">
             <textarea type="text-area" class="m-4 p-2" name="review" id="review"
                 style="color:black;width: 80%;  height:5rem; " placeholder="Start writing your review"></textarea>
             <button type="" class="btn btn-dark mb-3 comment"> Comment</button>
         </form>
-        <div id="reviews-container" class="reviews-container mb-5 border-top border-start border-end d-flex flex-column">
+        <div id="reviews-container"
+            class="reviews-container d-flex flex-column border">
         </div>
     </section>
 </div>
-    <script>
-    $(".comment").on("click", function (e) {
-            e.preventDefault();
-            var entity = {
-                MoviesID: localStorage.getItem("selectedMovieId"),
-                Comment: $("textarea").val()
-            };
-            ReviewService.create(entity);
-            $("textarea").val("");
-        });
+<script>
 
-        ReviewService.init();
+Movie.init();
+
+    $("#watchlistBtn").click(function () {
+        WatchlistService.addMovie(localStorage.getItem("watchlist"), localStorage.getItem("selectedMovieId"));
+    });
+
+    $(".comment").on("click", function (e) {
+        e.preventDefault();
+        var entity = {
+            MoviesID: localStorage.getItem("selectedMovieId"),
+            Comment: $("textarea").val()
+        };
+        ReviewService.create(entity);
+        $("textarea").val("");
+    });
+
+    ReviewService.init();
 
     $(".rate_btn").on("click", function (e) {
-            e.preventDefault();
-            var entity = {
-                UsersID:Utils.parseJwt(localStorage.getItem("user_token")).UsersID,
-                MoviesID: localStorage.getItem("selectedMovieId"),
-                Rating: document.querySelector('input[name="user_rating"]').value
-            };
-            RatingService.create(entity);
-            $("textarea").val("");
-        
-        });
+        e.preventDefault();
+      
+        var entity = {
+            UsersID: Utils.parseJwt(localStorage.getItem("user_token")).UsersID,
+            MoviesID: localStorage.getItem("selectedMovieId"),
+            Rating: $('input[name="user_rating"]').val()
+        };
 
-        rating.create({
+    
+            RatingService.create(entity);
+    
+
+    });
+
+    rating.create({
         'selector': '#rating1',
         'unselectedIcon': 'fa fa-star-o fa-lg',
         'selectedIcon': 'fa fa-star fa-lg',
         'outOf': 10,
         'defaultRating': 0,
-        'name':'user_rating',
+        'name': 'user_rating',
     });
 
-
-    </script>
     
-    
+    $(document).on("click", ".person-link", function() {
+                    var personId = $(this).attr("data-id");
+                    localStorage.setItem("selectedPersonId", personId);
+                    window.location.href = "#person";
+                  });
 
+</script>
