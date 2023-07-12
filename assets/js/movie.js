@@ -33,9 +33,9 @@ var Movie={
               cast.forEach(function (member) {
                 $.get("rest/actors/" + member.ActorID, function (data) {
                   var castHtml = `
-                    <div class="clas d-flex flex-column align-items-start">
+                    <div class="clas d-flex flex-column  align-items-start">
                       <div class="celeb_img">
-                        <img src="${data.Image}" alt="">
+                        <img src="${data.Image}"  data-id="${data.ActorsID} alt="">
                       </div>
                       <a href="#person" data-id="${data.ActorsID}" class="celeb_info person-link p-2">${data.FirstName + " " + data.LastName}</a>
                     </div>`;

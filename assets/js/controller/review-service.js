@@ -2,18 +2,24 @@ var ReviewService = {
     init: function () {
         ReviewService.getReviews();
     },
-    getReviews:function(){
+    getReviews: function () {
         var mID = localStorage.getItem("selectedMovieId");
-        // var loggedInUserId = Utils.parseJwt(localStorage.getItem("user_token")).UsersID;
         $("#reviews-container").empty();
-        $.get("rest/reviews/movie/"+mID, function (data) {
+        $.get("rest/reviews/movie/" + mID, function (data) {
             if (data.length === 0) {
                 $("#reviews-container").append("<h4 class='pt-4 m-auto pb-5'> No reviews made yet. Be the first one to review this movie</h4>");
             } else {
                 data.forEach(function (review) {
                     // console.log(review);
                     $.get("rest/users/" + review.UsersID, function (user) {
-                      //  var deleteButtonHtml = (review.UsersID === Utils.parseJwt(localStorage.getItem("user_token")).UsersID) ? `<i class="bi bi-x-square " onclick=ReviewService.delete(${review.ReviewsID}) data-review-id="${review.ReviewsID}" style="cursor:pointer" ></i>` : "";
+                        var deleteButtonHtml = "";
+                        var token = localStorage.getItem("user_token");
+                        if (token) {
+                            var loggedInUser = Utils.parseJwt(token);
+                            if (review.UsersID === loggedInUser.UsersID) {
+                                deleteButtonHtml = `<i class="bi bi-x-square" onclick="ReviewService.delete(${review.ReviewsID})" data-review-id="${review.ReviewsID}" style="cursor:pointer"></i>`;
+                            }
+                        }
                         var reviewHtml = `
                         <div class="review d-flex p-2 border-bottom  ">
                             <img src="./assets/pics/dragon.jpg" alt="" width="70px" height="70px" class="rounded">
@@ -25,10 +31,11 @@ var ReviewService = {
                                     </div>
                                     <p class="ms-2">${review.Comment}</p>
                                 </div>
+                                ${deleteButtonHtml}
                             </div>
                         </div>
                     `;
-                    
+
                         $("#reviews-container").append(reviewHtml);
                     });
                 });
@@ -99,7 +106,7 @@ var ReviewService = {
             },
             type: "DELETE",
             success: function (result) {
-                ReviewService.getReviews();                
+                ReviewService.getReviews();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 toastr.error(XMLHttpRequest.responseJSON.message);

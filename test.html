@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>#cardContainer {
+        width: 100%;
+        overflow-x: scroll;
+        white-space: nowrap;
+      }
+      
+      .card {
+        display: inline-block;
+        width: 200px;
+        height: 150px;
+        background-color: rgb(196, 21, 21);
+        margin-right: 10px;
+      }
+      </style>
+</head>
+<body>
+    <div id="cardContainer">
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+        <!-- Add more cards as needed -->
+      </div>
+      
+      <button id="scrollLeft">Left</button>
+      <button id="scrollRight">Right</button>
+      
+
+      <script>
+        $(document).ready(function() {
+  var container = $("#cardContainer");
+  var scrollStep = 200; // The scroll distance in pixels
+
+  // Scroll left
+  $("#scrollLeft").on("click", function() {
+    container.animate({ scrollLeft: "-=" + scrollStep }, "slow");
+  });
+
+  // Scroll right
+  $("#scrollRight").on("click", function() {
+    container.animate({ scrollLeft: "+=" + scrollStep }, "slow");
+  });
+});
+
+      </script>
+</body>
+</html>

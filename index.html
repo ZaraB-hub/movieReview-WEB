@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="./assets/css/person.css">
   <link rel="stylesheet" href="./assets/css/watchlist.css">
 
+  <link rel="stylesheet" href="./SimpleStarRating-master/SimpleStarRating.css">
+
   <!-- FONTS -->
   <link rel="stylesheet" href="./assets/css/fonts.css">
 
@@ -50,12 +52,12 @@
         </a>
       </div>
       <div class=" text-center flex-grow-1 col-lg-7 col-3 d-none d-md-block">
-        <form action="#search" method="get" id="search-form" class="d-flex justify-content-center">
+        <form action="#search" method="get" id="search-form" class="d-flex justify-content-center me-5">
           <input class="form-control" id="search-input" type="search" style="width: 70%;" name="search_query"
             placeholder="Search Flixpedia" aria-label="Search">
-          <button class="btn btn-outline-black ms-1 border-0 text-black" id="search-icon" type="submit">
+          <!-- <button class="btn btn-outline-black ms-1 border-0 text-black" id="search-icon" type="submit">
             <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
+          </button> -->
         </form>
       </div>
       <div class="col-md-2 col-5  d-flex align-items-center justify-content-end user_nav">
@@ -132,7 +134,7 @@
     crossorigin="anonymous"></script>
 
   <!-- Star plugin -->
-
+<script src="./SimpleStarRating-master/SimpleStarRating.js"></script>
   <script src="./assets/simple-star-rating-input/rating.js"></script>
 
   <script>

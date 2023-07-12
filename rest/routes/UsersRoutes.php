@@ -24,7 +24,8 @@ Flight::route('POST /email', function () {
 
 Flight::route('PUT /users/@id', function ($id) {
   $data = Flight::request()->data->getData();
-  Flight::users_service()->update($id, $data,"UsersID");
+  Flight::json(Flight::users_service()->update($id, $data,"UsersID"));
+  
 });
 
 Flight::route('DELETE /users/@id', function ($id) {
@@ -47,3 +48,10 @@ Flight::route('POST /login', function () {
   }
 });
   
+
+Flight::route('POST /token',function(){
+  $data = Flight::request()->data->getData();
+  unset($data['Password']);
+  $jwt = JWT::encode($data, Config::JWT_SECRET(), 'HS256');
+  Flight::json(['token' => $jwt]);
+});

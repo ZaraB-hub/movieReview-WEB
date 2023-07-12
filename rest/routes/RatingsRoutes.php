@@ -23,7 +23,7 @@ Flight::route(' DELETE  /ratings/@id', function ($id) {
 
 Flight::route('PUT /ratings/@id', function ($id) {
     $data = Flight::request()->data->getData();
-    Flight::ratings_service()->update($id, $data, "RatingsID");
+    Flight::json(Flight::ratings_service()->update($id, $data, "RatingsID"));
 });
 
 

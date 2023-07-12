@@ -17,7 +17,7 @@ var Signup = {
         },
         password: {
           required: true,
-          minlength:3
+          minlength:1
         },
         username: {
           required: true,
@@ -31,7 +31,7 @@ var Signup = {
         },
         password: {
           required: "Please enter your password",
-          minlength: "Password has to have atleast 3 charachters"
+          minlength: "Password has to have atleast 5 charachters"
         },
         username: {
           required: "Please enter your username",

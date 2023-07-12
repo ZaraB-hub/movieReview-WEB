@@ -22,9 +22,9 @@ class BaseService
             return $this->dao_object->get_by_id($id);
         }
     
-        public function update($entity, $id, $id_column="id")
+        public function update($id,$data, $id_column="id")
         {
-            return $this->dao_object->update($entity, $id, $id_column);
+            return $this->dao_object->update($id, $data, $id_column);
         }
     
     

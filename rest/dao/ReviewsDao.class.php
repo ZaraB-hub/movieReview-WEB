@@ -12,7 +12,7 @@ class ReviewsDao extends BaseDao
 
     function get_by_movie_id($id)
     {
-        return $this->query("SELECT * FROM reviews WHERE MoviesID = :id", ["id" => $id]);
+        return $this->query("SELECT * FROM reviews WHERE MoviesID = :id ORDER BY CreatedAt Desc", ["id" => $id]);
     }
 
 

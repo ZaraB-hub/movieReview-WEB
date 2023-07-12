@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-footer border-0 d-flex flex-column align-items-center justify-content-center">
                     <button type="button" class="btn btn-secondary w-50 rate_btn">Rate</button>
-                    <button type="button" class="btn btn-secondary w-50 " data-bs-dismiss="modal">Remove Rating</button>
+                    <button type="button" class="btn btn-secondary w-50 remove_rating" data-bs-dismiss="modal" ratings-id="">Remove Rating</button>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="d-flex  flex-column pb-3">
                 <h5 class="pe-2">Flixpedia rating: <i class="bi bi-star yellow"></i> <span
-                        class="flex_rating">4.7/10</span> </h5>
+                        class="flex_rating"></span> </h5>
                 <h5>Your rating: <i class="bi bi-star"></i><span type="button" data-bs-toggle="modal"
                         data-bs-target="#rateModal" class="ps-1 user_rating bg_hover p-1 ms-1"> </span></h5>
             </div>
@@ -51,10 +51,10 @@
                 <h6 class="fw-semibold">Overview</h6>
                 <p class="plot pe-4"></p>
             </div>
-            <div class="minus">
+            <!-- <div class="minus">
                 <h6 class="fw-semibold   ">Director</h6>
                 <p class="">Quentin Tarantino</p>
-            </div>
+            </div> -->
             <button type="button" id="watchlistBtn" class="btn-dark btn w-25">
                 <i class='fa fa-plus fa-xl pe-2 me-1'></i>
                 Add to Watchlist
@@ -64,9 +64,8 @@
     </div>
 
 
-    <section class="cast-section">
-        <div class="cast-container d-flex flex-wrap  mt-3">
-        </div>
+    <section class="cast-section d-flex flex-nowrap flex-column">
+
     </section>
 
 
@@ -77,18 +76,29 @@
                 style="color:black;width: 80%;  height:5rem; " placeholder="Start writing your review"></textarea>
             <button type="" class="btn btn-dark mb-3 comment"> Comment</button>
         </form>
-        <div id="reviews-container"
-            class="reviews-container d-flex flex-column border">
+        <div id="reviews-container" class="reviews-container d-flex flex-column border">
         </div>
     </section>
 </div>
 <script>
 
-Movie.init();
+    Movie.init();
 
     $("#watchlistBtn").click(function () {
-        WatchlistService.addMovie(localStorage.getItem("watchlist"), localStorage.getItem("selectedMovieId"));
+        var watchlistButton = $(this);
+        var watchlistId = localStorage.getItem("watchlist");
+        var selectedMovieId = localStorage.getItem("selectedMovieId");
+
+        if (watchlistButton.text().toLowerCase().trim().includes("add to watchlist")) {
+            WatchlistService.addMovie(watchlistId, selectedMovieId);
+            watchlistButton.html("<i class='fa fa-check fa-xl pe-2 me-1'></i>Added to Watchlist");
+        } else {
+            WatchlistService.deleteMovie(watchlistId, selectedMovieId);
+            watchlistButton.html("<i class='fa fa-plus fa-xl pe-2 me-1'></i>Add to Watchlist");
+        }
     });
+
+
 
     $(".comment").on("click", function (e) {
         e.preventDefault();
@@ -102,35 +112,25 @@ Movie.init();
 
     ReviewService.init();
 
-    $(".rate_btn").on("click", function (e) {
-        e.preventDefault();
-      
-        var entity = {
-            UsersID: Utils.parseJwt(localStorage.getItem("user_token")).UsersID,
-            MoviesID: localStorage.getItem("selectedMovieId"),
-            Rating: $('input[name="user_rating"]').val()
-        };
 
-    
-            RatingService.create(entity);
-    
 
-    });
+
 
     rating.create({
         'selector': '#rating1',
         'unselectedIcon': 'fa fa-star-o fa-lg',
         'selectedIcon': 'fa fa-star fa-lg',
         'outOf': 10,
-        'defaultRating': 0,
+        'defaultRating': 10,
         'name': 'user_rating',
     });
 
-    
-    $(document).on("click", ".person-link", function() {
-                    var personId = $(this).attr("data-id");
-                    localStorage.setItem("selectedPersonId", personId);
-                    window.location.href = "#person";
-                  });
+
+    $(document).on("click", ".person-link", function () {
+        var personId = $(this).attr("data-id");
+        localStorage.setItem("selectedPersonId", personId);
+        window.location.href = "#person";
+    });
+
 
 </script>

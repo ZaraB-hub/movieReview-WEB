@@ -2,6 +2,13 @@
 Flight::route('GET /movies/@id:[0-9]+', function ($id) {
     FLight::json(Flight::movies_service()->get_by_id($id));
 });
+
+Flight::route('GET /movie',function(){
+    $request = Flight::request();
+    $id1 = Flight::request()->query['id'];
+    FLight::json(Flight::movies_service()->get_by_id($id1));
+});
+
 Flight::route('GET /movies/genre/@genre', function ($genre) {
     FLight::json(Flight::movies_service()->get_genre($genre));
 });

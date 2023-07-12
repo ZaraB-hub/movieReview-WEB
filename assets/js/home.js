@@ -15,8 +15,8 @@ var Home = {
                 var $sectionContainer = $("<div>").addClass("section o-hidden mb-2");
                 var $sectionTitle = $("<h3>").text(route).addClass("section_title m-0 p-0");
                 $sectionContainer.append($sectionTitle);
-                $left=$("<i>").addClass("bi bi-arrow-left");
-                $right=$("<i>").addClass("bi bi-arrow-right");
+                $left = $("<i>").addClass("bi bi-arrow-left");
+                $right = $("<i>").addClass("bi bi-arrow-right");
 
                 var $cardGroup = $("<div>").addClass("card-group d-flex flex-nowrap overflow-auto scroll-behavior");
 
@@ -26,7 +26,7 @@ var Home = {
                             $("<h2>").text("Your Watchlist is empty")).append(
                                 $("<p>").text("Browse movies and keep track of what you watch"));
                         $sectionContainer.append($message);
-                    } else if (!token && routeURL === "rest/movies/watchlist") {
+                    } else if (!token && routeURL.includes("wm/list")) {
                         var $signInMessage = $("<div>").addClass("p-3 mt-5 d-flex flex-column align-items-center").append(
                             $("<h2>").text("Sign in to keep track of your movies")).append(
                                 $("<p>").text("Create an account or log in"));
@@ -57,10 +57,10 @@ var Home = {
             }
             var $cardContainer = $("<div>").addClass('movie-card d-flex flex-column').css({ height: '500px', width: '285px' });
             var $figure = $('<figure>').addClass('card-banner mb-3').css({ height: '428px', width: '285px' }).attr("data-id", movie.MoviesID);
-            var $cardImage = $("<img>").attr("src",movie.Image).attr("data-id", movie.MoviesID);
-           var $wtchIcon = $("<button>").addClass("btn btn-primary");
-var $icon = $("<i>").addClass("bi bi-bookmark-plus-fill fa-lg");
-$wtchIcon.append($icon);
+            var $cardImage = $("<img>").attr("src", movie.Image).attr("data-id", movie.MoviesID);
+            var $wtchIcon = $("<button>").addClass("btn btn-primary");
+            var $icon = $("<i>").addClass("bi bi-bookmark-plus-fill fa-lg");
+            $wtchIcon.append($icon);
 
             var $cardBody = $("<div>").addClass(" title-wrapper d-flex justify-content-between align-items-baseline");
             var $title = $("<h3>").addClass("card-title").text(movie.Title).attr("data-id", movie.MoviesID);
@@ -71,9 +71,9 @@ $wtchIcon.append($icon);
             var $watchlistBtn = $("<button>").addClass("btn btn-secondary w-100 mt-2")
                 .html("<span><i class='fa fa-plus fa-xl pe-2'></i></span>Watchlist");
             $figure.append($cardImage);
-            $cardBody.append($title,$date);
+            $cardBody.append($title, $date);
             $cardContainer.append($figure, $cardBody);
-         
+
 
 
             $title.click(function () {

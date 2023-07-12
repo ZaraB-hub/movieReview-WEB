@@ -59,11 +59,11 @@
     max-height: 100%; 
     object-fit: contain;
     border-radius: 8px 8px 0 0;
-    transition: filter 0.3s ease; /* Add transition for a smooth effect */
+    transition: filter 0.3s ease; 
 }
 
 .celeb_img > img:hover {
-  filter: brightness(50%); /* Adjust the brightness value as desired */
+  filter: brightness(50%); 
 }
 
 
