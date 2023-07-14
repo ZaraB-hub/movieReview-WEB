@@ -30,9 +30,9 @@ var UserService = {
     },
 
   logout: function () {
-      localStorage.clear();
-      location.reload()
-    },
+    localStorage.removeItem('user_token');
+    localStorage.removeItem('watchlist');
+  },
 
   updateUser: function (entity) {
     localStorage.getItem("user_token");

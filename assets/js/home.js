@@ -4,7 +4,11 @@ var Home = {
             "From Your Watchlist": "rest/wm/list/" + localStorage.getItem("watchlist"),
             "Family Film Night": "rest/movies/genre/family",
             "Recently Added": "rest/movies/",
-            "Dramas": "rest/movies/genre/fantasy",
+            "Dramas": "rest/movies/genre/drama",
+            "Comedies": "rest/movies/genre/comedy",
+            "Romance": "rest/movies/genre/romance",
+            "Action & Adventure": "rest/movies/genre/adventure",
+            "Made in Korea": "rest/movies/genre/korean"
         };
 
         var token = localStorage.getItem("user_token");
@@ -52,7 +56,7 @@ var Home = {
     },
     generateCardElements: function (data, $cardGroup) {
         data.forEach(function (movie) {
-            if ($cardGroup.children().length >= 7) {
+            if ($cardGroup.children().length >= 4) {
                 return;
             }
             var $cardContainer = $("<div>").addClass('movie-card d-flex flex-column').css({ height: '500px', width: '285px' });

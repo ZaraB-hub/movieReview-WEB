@@ -1,0 +1,41 @@
+<h1>Account Settings</h1>
+
+<div class="row ">
+    <div class=" m-3 col-lg-6 ">
+        <form id="editForm" class="d-flex flex-column pb-4">
+            <label for="email" class="fs-3">Your Email</label>
+            <input type="email" id="email" name="email" class="mb-1" required>
+        
+            <label for="password" class="fs-3">Your Password</label>
+            <input type="password" id="password" name="password" class="mb-1" required>
+        
+            <label for="password" class="fs-3">Your Username</label>
+            <input type="text" id="user_name" name="username" class="mb-1" required>
+          </form>
+          <button type="button" class="btn btn-danger " data-bs-dismiss="modal"
+          onclick="UserService.deleteUser()">Delete Account</button>
+        <button type="button" class="btn btn-secondary update_btn">Update Account</button>
+    </div>
+
+      <div class="col col-s-12 ms-3">
+        <h3>Icons:</h3>
+        <div class="icon_container d-flex gap10 flex flex-wrap">
+            <img src=".../assets/pics/dragon.jpg" alt="" width="70px;" height="70px">
+            <img src=".../assets/pics/dragon.jpg" alt="" width="70px;" height="70px">
+            <img src=".../assets/pics/dragon.jpg" alt="" width="70px;" height="70px">
+        </div>
+      </div>
+
+</div>
+
+<script> 
+var token = localStorage.getItem("user_token");
+    if (token) {
+      var user = Utils.parseJwt(token);
+      $('input[name="username"]').val(user.Username);
+      $('input[name="password"]').val(user.Password);
+      $('input[name="email"]').val(user.Email);
+      $("#nav-login").html(navUser);
+      $("#username").text(user.Username);
+    }
+      </script>

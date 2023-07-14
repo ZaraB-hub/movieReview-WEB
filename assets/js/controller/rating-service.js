@@ -29,8 +29,8 @@ var RatingService = {
                 Rating: $('input[name="user_rating"]').val()
             };
 
-            var flexRating = $(".flex_rating").text();
-            if (flexRating == "0/10") {
+            var userRatng = $(".user_rating_rate").text();
+            if (userRatng == "Rate") {
                 RatingService.create(entity);
             } else {
                 var ratingsId = $(".user_rating").attr("ratings-id");
